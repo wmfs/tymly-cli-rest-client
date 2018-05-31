@@ -6,9 +6,6 @@
   "scripts": {
     "lint": "standard",
     "test": "standard && mocha",
-    "cli:live": "",
-    "cli:dev": "",
-    "cli:local": "",
     "cli": "node lib/cli"
   },
   "repository": {

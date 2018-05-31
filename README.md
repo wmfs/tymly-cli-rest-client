@@ -11,20 +11,23 @@ $ npm install tymly-cli --save
 ### Usage
 
 ```bash
-$ npm run [cli:live|cli:dev|cli:local] --name configName
+$ npm run cli --name configName
 ```
 
 ##### --name
-Name of the configuration you want to run. e.g. search 
+Name of the configuration you want to run, it must match with a config name. e.g. search 
 
-Each config will have it's own set of input values
+Each config will have it's own set of input values and must be added as extra flags.
+For example, if you wish to launch the search state machine you can pass in a query and a limit so the command will look like the following:
+
+```bash
+$ npm run cli --name=search --query=kebab --limit=12
+```
 
 ### Build environment variables
 | Environment Variable | Notes | Example |
 | -------------------- | ----- | ------- |
-| `TYMLY_LIVE_URL`     | The base URL of the live Tymly API | `https://tymly.wmfs.net` |
-| `TYMLY_DEV_URL`      | The base URL of the dev Tymly API | `https://tymly-dev.wmfs.net` |
-| `TYMLY_LOCAL_URL`     | The base URL of the Tymly instance running locally | `http://localhost:3210` |
+| `TYMLY_API_URL`     | The base URL of Tymly | `http://localhost:3210` |
 | `TYMLY_NIC_AUTH0_CLIENT_ID`     | The client ID (as supplied by Auth0) | `abc...` |
 | `TYMLY_NIC_AUTH0_CLIENT_SECRET`  | The client secret (as supplied by Auth0) | `abc...` |
 | `TYMLY_NIC_AUTH0_DOMAIN` | The client domain (as supplied by Auth0) | `abc.de.auth0.com` |
