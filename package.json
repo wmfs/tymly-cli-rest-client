@@ -1,0 +1,28 @@
+{
+  "name": "tymly-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to launch Tymly State Machines over REST",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "standard && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmfs/tymly-cli"
+  },
+  "author": "Meena Hoda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wmfs/tymly-cli/issues"
+  },
+  "homepage": "https://github.com/wmfs/tymly-cli#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "4.1.2",
+    "mocha": "5.2.0",
+    "standard": "11.0.1",
+    "tymly": "^0.0.17"
+  }
+}
