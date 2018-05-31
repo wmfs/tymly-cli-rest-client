@@ -1,0 +1,14 @@
+{
+  "stateMachineName": "wmfs_refreshRanking_1_0",
+  "input": {
+    "schema": "",
+    "category": ""
+  },
+  "options": {
+    "instigatingClient": {
+      "appName": "tymly-cli",
+      "domain": "cli"
+    },
+    "sendResponse": "COMPLETE"
+  }
+}
