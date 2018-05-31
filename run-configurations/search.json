@@ -1,8 +1,18 @@
 {
   "stateMachineName": "tymly_search_1_0",
-  "input": {},
+  "input": {
+    "domain": "",
+    "query": "",
+    "orderBy": "",
+    "offset": 0,
+    "limit": 10,
+    "showActiveEventsOnly": false,
+    "lat": 0,
+    "long": 0,
+    "categoryRestriction": []
+  },
   "options": {
-    "insitgatingClient": {
+    "instigatingClient": {
       "appName": "tymly-cli",
       "domain": "cli"
     },
