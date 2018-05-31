@@ -1,0 +1,11 @@
+{
+  "stateMachineName": "tymly_search_1_0",
+  "input": {},
+  "options": {
+    "insitgatingClient": {
+      "appName": "tymly-cli",
+      "domain": "cli"
+    },
+    "sendResponse": "COMPLETE"
+  }
+}
