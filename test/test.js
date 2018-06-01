@@ -13,6 +13,7 @@ describe('tymly-cli tests', function () {
       process.env.TYMLY_NIC_AUTH0_DOMAIN &&
       process.env.TYMLY_NIC_AUTH0_CLIENT_ID &&
       process.env.TYMLY_NIC_AUTH0_CLIENT_SECRET &&
+      process.env.TYMLY_AUTH_AUDIENCE &&
       process.env.TYMLY_API_URL
     ) {
       exec(
