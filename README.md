@@ -33,6 +33,7 @@ To find the input flags, you can look in the run-configurations directory and fi
 | `TYMLY_NIC_AUTH0_CLIENT_ID`     | The client ID (as supplied by Auth0) | `abc...` |
 | `TYMLY_NIC_AUTH0_CLIENT_SECRET`  | The client secret (as supplied by Auth0) | `abc...` |
 | `TYMLY_NIC_AUTH0_DOMAIN` | The client domain (as supplied by Auth0) | `abc.de.auth0.com` |
+| `TYMLY_AUTH_AUDIENCE` | The Tymly audience | `abc...` |
 
 Once the environment variables have been set, you can run the tests like this:
 
