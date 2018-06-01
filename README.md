@@ -18,7 +18,7 @@ $ npm run cli --name configName
 Name of the configuration you want to run, it must match with a config name. e.g. search, refreshRanking
 
 Each config will have it's own set of input values and must be added as extra flags.
-For example, if you wish to launch the search state machine you can pass in a query and a limit so the command will look like the following:
+For example, if you wish to launch the search state machine you can pass in a query, a limit and an offset so the command will look like the following:
 
 ```bash
 $ npm run cli --name=search --query=kebab --limit=12 --offset=0
