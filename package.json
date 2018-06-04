@@ -1,18 +1,27 @@
 {
-  "name": "tymly-cli",
-  "version": "1.0.0",
+  "name": "@wmfs/tymly-cli",
+  "version": "0.0.0-semantically-released",
   "description": "CLI tool to launch Tymly State Machines over REST",
   "main": "index.js",
+  "keywords": [
+    "cli",
+    "tymly",
+    "executions",
+    "REST",
+    "API",
+    "state machines"
+  ],
   "scripts": {
-    "lint": "standard",
-    "test": "standard && mocha",
-    "cli": "node lib/cli"
+    "cli": "node lib/cli",
+    "test": "nyc mocha && standard",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wmfs/tymly-cli"
+    "url": "https://github.com/wmfs/tymly-cli.git"
   },
-  "author": "Meena Hoda",
+  "author": "West Midlands Fire Service",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/wmfs/tymly-cli/issues"
@@ -25,8 +34,19 @@
   },
   "devDependencies": {
     "chai": "4.1.2",
+    "codecov": "3.0.2",
+    "cz-conventional-changelog": "2.1.0",
     "mocha": "5.2.0",
+    "semantic-release": "^15.5.0",
     "standard": "11.0.1",
     "tymly": "^0.0.17"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
