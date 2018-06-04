@@ -7,7 +7,6 @@ describe('tymly-cli tests', function () {
   this.timeout(5000)
 
   process.env.TYMLY_API_URL = 'http://localhost:3210'
-
   it('should run the script', done => {
     if (
       process.env.TYMLY_NIC_AUTH0_DOMAIN &&
@@ -17,7 +16,7 @@ describe('tymly-cli tests', function () {
       process.env.TYMLY_API_URL
     ) {
       exec(
-        'npm run cli --name=search --query=kebab --limit=12',
+        'npm run cli --name=search --query=kebab --limit=12 --offset=0',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
           console.log('stdout', stdout)
