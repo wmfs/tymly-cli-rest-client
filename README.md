@@ -1,5 +1,6 @@
 # tymly-cli
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wmfs/tymly-cli/blob/master/LICENSE)
+
+[![Build Status](https://travis-ci.org/wmfs/tymly-cli.svg?branch=master)](https://travis-ci.org/wmfs/tymly-cli) [![codecov](https://codecov.io/gh/wmfs/tymly-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/wmfs/tymly-cli) [![CodeFactor](https://www.codefactor.io/repository/github/wmfs/tymly-cli/badge)](https://www.codefactor.io/repository/github/wmfs/tymly-cli) [![Dependabot badge](https://img.shields.io/badge/Dependabot-active-brightgreen.svg)](https://dependabot.com/) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wmfs/tymly-cli/blob/master/LICENSE)
 
 
 > CLI tool to launch Tymly State Machines over REST
