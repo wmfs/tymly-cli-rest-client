@@ -15,7 +15,7 @@ describe('tymly-cli tests', function () {
   ) {
     it('should run the script', done => {
       exec(
-        'npm run cli --name=search --query=kebab --limit=12 --offset=0',
+        'npm run cli --command=search --query=kebab --limit=12 --offset=0',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
           done()
@@ -23,7 +23,7 @@ describe('tymly-cli tests', function () {
       )
     })
 
-    it('should run the script without a name specified', done => {
+    it('should run the script without a command specified', done => {
       exec(
         'npm run cli',
         (err, stdout, stderr) => {
@@ -34,9 +34,9 @@ describe('tymly-cli tests', function () {
       )
     })
 
-    it('should run the script with an unknown config name', done => {
+    it('should run the script with an unknown config command', done => {
       exec(
-        'npm run cli --name=searchStuff ',
+        'npm run cli --command=searchStuff ',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
           expect(stderr).to.not.eql(null)
@@ -47,7 +47,7 @@ describe('tymly-cli tests', function () {
   } else {
     it('should run the script', done => {
       exec(
-        'npm run cli --name=search --query=kebab --limit=12 --offset=0',
+        'npm run cli --command=search --query=kebab --limit=12 --offset=0',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
           done()

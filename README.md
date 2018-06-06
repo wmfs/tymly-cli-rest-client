@@ -15,17 +15,17 @@ $ npm install tymly-cli --save
 ### Usage
 
 ```bash
-$ npm run cli --name configName
+$ npm run cli --command configKey
 ```
 
-##### --name
-Name of the configuration you want to run, it must match with a config name. e.g. search, refreshRanking
+##### --command
+Key of the configuration you want to run, it must match with a config command. e.g. search, refreshRanking
 
 Each config will have it's own set of input values and must be added as extra flags.
 For example, if you wish to launch the search state machine you can pass in a query, a limit and an offset so the command will look like the following:
 
 ```bash
-$ npm run cli --name=search --query=kebab --limit=12 --offset=0
+$ npm run cli --command=search --query=kebab --limit=12 --offset=0
 ```
 
 To find the input flags, you can look in the run-configurations directory and find the state machine you wish to run.
