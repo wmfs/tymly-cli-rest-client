@@ -33,6 +33,17 @@ describe('tymly-cli tests', function () {
         }
       )
     })
+
+    it('should run the script with an unknown config name', done => {
+      exec(
+        'npm run cli --name=searchStuff ',
+        (err, stdout, stderr) => {
+          expect(err).to.eql(null)
+          expect(stderr).to.not.eql(null)
+          done()
+        }
+      )
+    })
   } else {
     it('should run the script', done => {
       exec(
