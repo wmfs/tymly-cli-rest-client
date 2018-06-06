@@ -30,6 +30,13 @@ $ npm run cli --command=search --query=kebab --limit=12 --offset=0
 
 To find the input flags, you can look in the run-configurations directory and find the state machine you wish to run.
 
+#### quiet
+Including 'quiet' in the command will make it run in 'quiet mode' and does not put anything onto the console
+
+```bash
+$ npm rul cli quiet --command=incidentsInProgress
+```
+
 ### Build environment variables
 | Environment Variable | Notes | Example |
 | -------------------- | ----- | ------- |
