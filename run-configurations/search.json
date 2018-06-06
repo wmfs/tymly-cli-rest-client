@@ -1,5 +1,4 @@
 {
-  "timeout": 5000,
   "stateMachineName": "tymly_search_1_0",
   "input": {
     "domain": "",
