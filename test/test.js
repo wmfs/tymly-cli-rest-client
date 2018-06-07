@@ -13,7 +13,7 @@ describe('tymly-cli tests', function () {
     process.env.TYMLY_AUTH_AUDIENCE &&
     process.env.TYMLY_API_URL
   ) {
-    it('should run the script', done => {
+    it('should run the script successfully', done => {
       exec(
         'npm run cli --command=search --query=kebab --limit=12 --offset=0',
         (err, stdout, stderr) => {
@@ -61,9 +61,9 @@ describe('tymly-cli tests', function () {
       )
     })
   } else {
-    it('should run the script', done => {
+    it('should run the script without environment variables', done => {
       exec(
-        'npm run cli --command=search --query=kebab --limit=12 --offset=0',
+        'npm run cli --command=search --query=kebab --limit=20 --offset=10',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
           console.log('stdout', stdout)
