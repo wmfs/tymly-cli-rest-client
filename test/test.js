@@ -44,6 +44,16 @@ describe('tymly-cli tests', function () {
         }
       )
     })
+
+    it('should run the script with quiet flag', done => {
+      exec(
+        'npm run cli quiet --command=incidentsInProgress',
+        (err, stdout, stderr) => {
+          expect(err).to.eql(null)
+          done()
+        }
+      )
+    })
   } else {
     it('should run the script', done => {
       exec(

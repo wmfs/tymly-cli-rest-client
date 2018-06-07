@@ -30,7 +30,7 @@ $ npm run cli --command=search --query=kebab --limit=12 --offset=0
 
 To find the input flags, you can look in the run-configurations directory and find the state machine you wish to run.
 
-#### quiet
+#### quiet or q
 Including 'quiet' in the command will make it run in 'quiet mode' and does not put anything onto the console
 
 ```bash
@@ -40,13 +40,13 @@ $ npm rul cli quiet --command=incidentsInProgress
 ### Build environment variables
 | Environment Variable | Notes | Example |
 | -------------------- | ----- | ------- |
-| `TYMLY_API_URL`     | The base URL of Tymly | `http://localhost:3210` |
-| `TYMLY_NIC_AUTH0_CLIENT_ID`     | The client ID (as supplied by Auth0) | `abc...` |
-| `TYMLY_NIC_AUTH0_CLIENT_SECRET`  | The client secret (as supplied by Auth0) | `abc...` |
-| `TYMLY_NIC_AUTH0_DOMAIN` | The client domain (as supplied by Auth0) | `abc.de.auth0.com` |
-| `TYMLY_AUTH_AUDIENCE` | The Tymly audience | `abc...` |
-| `DEBUG` | To enable debug statements | `tymly-cli` |
-| `WEB_API_TIMEOUT_IN_MS` | Specify a timeout. Default to 3000. | `5000` |
+| `TYMLY_API_URL`     | The base URL of Tymly (Required) | `http://localhost:3210` |
+| `TYMLY_NIC_AUTH0_CLIENT_ID`     | The client ID (as supplied by Auth0) (Required) | `abc...` |
+| `TYMLY_NIC_AUTH0_CLIENT_SECRET`  | The client secret (as supplied by Auth0) (Required) | `abc...` |
+| `TYMLY_NIC_AUTH0_DOMAIN` | The client domain (as supplied by Auth0) (Required) | `abc.de.auth0.com` |
+| `TYMLY_AUTH_AUDIENCE` | The Tymly audience (Required) | `abc...` |
+| `DEBUG` | To enable debug statements (Optional) | `tymly-cli` |
+| `WEB_API_TIMEOUT_IN_MS` | Specify a timeout. Default to 3000. (Optional) | `5000` |
 
 Once the environment variables have been set, you can run the tests like this:
 
