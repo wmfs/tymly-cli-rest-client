@@ -18,6 +18,8 @@ describe('tymly-cli tests', function () {
         'npm run cli --command=search --query=kebab --limit=12 --offset=0',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
+          console.log('stdout', stdout)
+          console.log('stderr', stderr)
           done()
         }
       )
@@ -29,6 +31,7 @@ describe('tymly-cli tests', function () {
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
           expect(stderr).to.not.eql(null)
+          console.log('stdout', stdout)
           done()
         }
       )
@@ -40,6 +43,7 @@ describe('tymly-cli tests', function () {
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
           expect(stderr).to.not.eql(null)
+          console.log('stdout', stdout)
           done()
         }
       )
@@ -50,6 +54,8 @@ describe('tymly-cli tests', function () {
         'npm run cli quiet --command=incidentsInProgress',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
+          console.log('stdout', stdout)
+          console.log('stderr', stderr)
           done()
         }
       )
@@ -60,6 +66,8 @@ describe('tymly-cli tests', function () {
         'npm run cli --command=search --query=kebab --limit=12 --offset=0',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
+          console.log('stdout', stdout)
+          console.log('stderr', stderr)
           done()
         }
       )
