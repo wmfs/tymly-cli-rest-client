@@ -1,4 +1,5 @@
 {
+  "required": ["query", "offset", "limit"],
   "stateMachineName": "tymly_search_1_0",
   "input": {
     "domain": "",

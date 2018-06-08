@@ -1,4 +1,5 @@
 {
+  "required": ["schema", "category"],
   "stateMachineName": "wmfs_refreshRanking_1_0",
   "input": {
     "schema": "",

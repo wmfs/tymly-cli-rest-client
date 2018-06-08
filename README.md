@@ -41,6 +41,53 @@ $ npm rul cli quiet --command=incidentsInProgress
 $ npm rul cli q --command=incidentsInProgress
 ```
 
+### Run Configurations
+
+#### incidentsInProgress
+
+```bash
+$ npm rul cli --command=incidentsInProgress
+```
+
+#### search
+
+##### inputs
+* query (required)
+* limit (required)
+* offset (required)
+* domain
+* orderBy
+* showActiveEventsOnly
+* lat
+* long
+* categoryRestriction
+
+```bash
+$ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 
+```
+
+When a value to any of the inputs contains multiple words then separate them with underscores.
+
+```bash
+$ npm rul cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 
+```
+
+When a value to any of the inputs is an array then separate them with commas.
+
+```bash
+$ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
+```
+
+#### refreshRanking
+
+##### inputs
+* schema (required)
+* category (required)
+
+```bash
+$ npm rul cli --command=refreshRanking --schema=wmfs --category=factory 
+```
+
 ### Build environment variables
 | Environment Variable | Notes | Example |
 | -------------------- | ----- | ------- |
