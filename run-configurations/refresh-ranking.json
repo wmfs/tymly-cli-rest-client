@@ -1,5 +1,4 @@
 {
-  "timeout": 20000,
   "stateMachineName": "wmfs_refreshRanking_1_0",
   "input": {
     "schema": "",

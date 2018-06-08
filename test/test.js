@@ -66,8 +66,8 @@ describe('tymly-cli tests', function () {
         'npm run cli --command=search --query=kebab --limit=20 --offset=10',
         (err, stdout, stderr) => {
           expect(err).to.eql(null)
-          console.log('stdout', stdout)
-          console.log('stderr', stderr)
+          expect(stderr).to.not.eql(null)
+          console.log('stdout:', stdout)
           done()
         }
       )
