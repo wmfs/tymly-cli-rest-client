@@ -60,17 +60,5 @@ describe('tymly-cli tests', function () {
         }
       )
     })
-  } else {
-    it('should run the script without environment variables', done => {
-      exec(
-        'npm run cli --command=search --query=kebab --limit=20 --offset=10',
-        (err, stdout, stderr) => {
-          expect(err).to.eql(null)
-          expect(stderr).to.not.eql(null)
-          console.log('stdout:', stdout)
-          done()
-        }
-      )
-    })
   }
 })
