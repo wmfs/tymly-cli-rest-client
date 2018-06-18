@@ -3,8 +3,6 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@wmfs/tymly-cli.svg)](https://www.npmjs.com/package/@wmfs/tymly-cli) [![Build Status](https://travis-ci.org/wmfs/tymly-cli.svg?branch=master)](https://travis-ci.org/wmfs/tymly-cli) [![codecov](https://codecov.io/gh/wmfs/tymly-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/wmfs/tymly-cli) [![CodeFactor](https://www.codefactor.io/repository/github/wmfs/tymly-cli/badge)](https://www.codefactor.io/repository/github/wmfs/tymly-cli) [![Dependabot badge](https://img.shields.io/badge/Dependabot-active-brightgreen.svg)](https://dependabot.com/) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wmfs/tymly-cli/blob/master/LICENSE)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwmfs%2Ftymly-cli.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwmfs%2Ftymly-cli?ref=badge_shield)
 
-
-
 > CLI tool to launch Tymly State Machines over REST
 
 ## <a name="install"></a>Install
@@ -12,13 +10,13 @@
 $ npm install tymly-cli --save
 ```
 
-### Usage
+## <a name="usage"></a>Usage
 
 ```bash
 $ npm run cli --command configKey
 ```
 
-##### --command
+### --command
 Key of the configuration you want to run, it must match with a config command. e.g. search, refreshRanking
 
 Each config will have it's own set of input values and must be added as extra flags.
@@ -30,7 +28,7 @@ $ npm run cli --command=search --query=kebab --limit=12 --offset=0
 
 To find the input flags, you can look in the run-configurations directory and find the state machine you wish to run.
 
-##### quiet or q
+### quiet | q
 Including 'quiet' in the command will make it run in 'quiet mode' and does not put anything onto the console
 
 ```bash
@@ -41,17 +39,21 @@ $ npm rul cli quiet --command=incidentsInProgress
 $ npm rul cli q --command=incidentsInProgress
 ```
 
-### Run Configurations
+## <a name="runConfig"></a>Run Configurations
 
-#### incidentsInProgress
+1. [Incidents In Progress](#incidentsInProgress)
+2. [Search](#search)
+3. [Refresh Ranking](#refreshRanking)
+
+### <a name="incidentsInProgress"></a>Incidents In Progress
 
 ```bash
 $ npm rul cli --command=incidentsInProgress
 ```
 
-#### search
+### <a name="search"></a>Search
 
-##### inputs
+#### Inputs:
 * query (required)
 * limit (required)
 * offset (required)
@@ -66,21 +68,21 @@ $ npm rul cli --command=incidentsInProgress
 $ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 
 ```
 
-When a value to any of the inputs contains multiple words then separate them with underscores.
+When a value to any of the inputs contains multiple words then separate them with underscores. See query:
 
 ```bash
 $ npm rul cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 
 ```
 
-When a value to any of the inputs is an array then separate them with commas.
+When a value to any of the inputs is an array then separate them with commas. See categoryRestriction:
 
 ```bash
 $ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
 ```
 
-#### refreshRanking
+### <a name="refreshRanking"></a>Refresh Ranking
 
-##### inputs
+#### Inputs:
 * schema (required)
 * category (required)
 
@@ -88,7 +90,7 @@ $ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRe
 $ npm rul cli --command=refreshRanking --schema=wmfs --category=factory 
 ```
 
-### Build environment variables
+## <a name="buildEnv"></a>Build environment variables
 | Environment Variable | Notes | Example |
 | -------------------- | ----- | ------- |
 | `TYMLY_API_URL`     | The base URL of Tymly (Required) | `http://localhost:3210` |
