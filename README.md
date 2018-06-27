@@ -32,11 +32,11 @@ To find the input flags, you can look in the run-configurations directory and fi
 Including 'quiet' in the command will make it run in 'quiet mode' and does not put anything onto the console
 
 ```bash
-$ npm rul cli quiet --command=incidentsInProgress
+$ npm run cli quiet --command=incidentsInProgress
 ```
 
 ```bash
-$ npm rul cli q --command=incidentsInProgress
+$ npm run cli q --command=incidentsInProgress
 ```
 
 ## <a name="runConfig"></a>Run Configurations
@@ -48,7 +48,7 @@ $ npm rul cli q --command=incidentsInProgress
 ### <a name="incidentsInProgress"></a>Incidents In Progress
 
 ```bash
-$ npm rul cli --command=incidentsInProgress
+$ npm run cli --command=incidentsInProgress
 ```
 
 ### <a name="search"></a>Search
@@ -65,19 +65,19 @@ $ npm rul cli --command=incidentsInProgress
 * categoryRestriction
 
 ```bash
-$ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 
+$ npm run cli --command=search --query=kebabs --limit=10 --offset=0 
 ```
 
 When a value to any of the inputs contains multiple words then separate them with underscores. See query:
 
 ```bash
-$ npm rul cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 
+$ npm run cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 
 ```
 
 When a value to any of the inputs is an array then separate them with commas. See categoryRestriction:
 
 ```bash
-$ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
+$ npm run cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
 ```
 
 ### <a name="refreshRanking"></a>Refresh Ranking
@@ -87,7 +87,7 @@ $ npm rul cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRe
 * category (required)
 
 ```bash
-$ npm rul cli --command=refreshRanking --schema=wmfs --category=factory 
+$ npm run cli --command=refreshRanking --schema=wmfs --category=factory 
 ```
 
 ## <a name="buildEnv"></a>Build environment variables
