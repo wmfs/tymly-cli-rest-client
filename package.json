@@ -9,7 +9,8 @@
     "executions",
     "REST",
     "API",
-    "state machines"
+    "state machines",
+    "package"
   ],
   "scripts": {
     "cli": "node lib/cli",
