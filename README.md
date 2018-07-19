@@ -44,6 +44,7 @@ $ npm run cli q --command=incidentsInProgress
 1. [Incidents In Progress](#incidentsInProgress)
 2. [Search](#search)
 3. [Refresh Ranking](#refreshRanking)
+4. [Refresh All] (#refreshAll)
 
 ### <a name="incidentsInProgress"></a>Incidents In Progress
 
@@ -88,6 +89,12 @@ $ npm run cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRe
 
 ```bash
 $ npm run cli --command=refreshRanking --schema=wmfs --category=factory 
+```
+
+## <a name="refreshAll"></a>Refresh All
+
+```bash
+$ npm run cli --command=refreshAll
 ```
 
 ## <a name="buildEnv"></a>Build environment variables

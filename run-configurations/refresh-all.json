@@ -1,0 +1,11 @@
+{
+  "stateMachineName": "wmfs_refreshAll_1_0",
+  "input": {},
+  "options": {
+    "instigatingClient": {
+      "appName": "tymly-cli",
+      "domain": "cli"
+    },
+    "sendResponse": "COMPLETE"
+  }
+}
