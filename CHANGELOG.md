@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/wmfs/tymly-cli/compare/v1.1.2...v1.1.3) (2018-08-06)
+
+
+### 🐛 Bug Fixes
+
+* remove sendResponse from refresh all config ([6d17fe8](https://github.com/wmfs/tymly-cli/commit/6d17fe8))
+
 ## [1.1.2](https://github.com/wmfs/tymly-cli/compare/v1.1.1...v1.1.2) (2018-07-31)
 
 
