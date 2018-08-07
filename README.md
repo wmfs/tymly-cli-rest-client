@@ -44,7 +44,7 @@ $ npm run cli q --command=incidentsInProgress
 1. [Incidents In Progress](#incidentsInProgress)
 2. [Search](#search)
 3. [Refresh Ranking](#refreshRanking)
-4. [Refresh All] (#refreshAll)
+4. [Refresh All](#refreshAll)
 
 ### <a name="incidentsInProgress"></a>Incidents In Progress
 
