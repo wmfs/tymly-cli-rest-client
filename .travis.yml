@@ -2,9 +2,9 @@ language: node_js
 notifications:
   email: false
 node_js:
-  - '9'
+  - lts/*
 install:
-  - npm install
+  - travis_retry npm install
 test:
   - npm test
 before_deploy:
