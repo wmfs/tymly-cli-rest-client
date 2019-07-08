@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.2.0...v1.3.0) (2019-07-08)
+
+
+### 🛠 Builds
+
+* **deps:** update axios requirement from ^0.18.0 to ^0.19.0 ([925d3d0](https://github.com/wmfs/tymly-cli-rest-client/commit/925d3d0))
+* **deps-dev:** update [@semantic-release](https://github.com/semantic-release)/changelog requirement ([aa6c4b4](https://github.com/wmfs/tymly-cli-rest-client/commit/aa6c4b4))
+
 # [1.2.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.1.3...v1.2.0) (2019-07-08)
 
 
