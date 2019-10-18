@@ -1,0 +1,12 @@
+{
+  "stateMachineName": "wmfs_checkSawApptNotifications_1_0",
+  "timeout": 15000,
+  "input": {},
+  "options": {
+    "instigatingClient": {
+      "appName": "postman",
+      "domain": ""
+    },
+    "sendResponse": "COMPLETE"
+  }
+}
