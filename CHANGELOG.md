@@ -1,3 +1,20 @@
+# [1.4.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.3.0...v1.4.0) (2019-10-23)
+
+
+### ✨ Features
+
+* add run-config for saw notifications ([](https://github.com/wmfs/tymly-cli-rest-client/commit/22f9890))
+
+
+### 🐛 Bug Fixes
+
+* appname + domain update ([](https://github.com/wmfs/tymly-cli-rest-client/commit/6c0497e))
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dev dependancies ([](https://github.com/wmfs/tymly-cli-rest-client/commit/099aed4))
+
 # [1.3.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.2.0...v1.3.0) (2019-07-08)
 
 
