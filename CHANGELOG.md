@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.4.0...v1.4.1) (2019-11-12)
+
+
+### 🐛 Bug Fixes
+
+* update refresh all state machine config ([](https://github.com/wmfs/tymly-cli-rest-client/commit/b3b14ee))
+
 # [1.4.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.3.0...v1.4.0) (2019-10-23)
 
 
