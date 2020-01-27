@@ -1,5 +1,5 @@
 {
-  "stateMachineName": "wmfs_runRefreshRankingAll_1_0",
+  "stateMachineName": "tymly_fullReindex_1_0",
   "input": {},
   "options": {
     "instigatingClient": {
