@@ -1,3 +1,28 @@
+# [1.5.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.4.1...v1.5.0) (2020-01-27)
+
+
+### ✨ Features
+
+* Amend run config to include full reindex state machine and update state machine name for refresh all rankings ([93868a7](https://github.com/wmfs/tymly-cli-rest-client/commit/93868a747439d378fbb2c17bf9a42b0a3ffe174c))
+
+
+### 🛠 Builds
+
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.103.3 to 1.104.0 ([a306636](https://github.com/wmfs/tymly-cli-rest-client/commit/a3066364ff9173636b6283f138625ed8057094a9))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.104.0 to 1.105.0 ([b2ab1e4](https://github.com/wmfs/tymly-cli-rest-client/commit/b2ab1e47de9ae6d77d620bbef1cbc00dd5e73ce0))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.105.0 to 1.106.0 ([8fa3fe4](https://github.com/wmfs/tymly-cli-rest-client/commit/8fa3fe43d9a52d60a86990d7aaf5bf8a087e692c))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.106.0 to 1.107.0 ([c63dd00](https://github.com/wmfs/tymly-cli-rest-client/commit/c63dd005dfb876c51c6b30b51076d0b07b7c9428))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.107.0 to 1.109.0 ([7c31c12](https://github.com/wmfs/tymly-cli-rest-client/commit/7c31c1200aed9ec032e117501fba15253e2df4a3))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.109.0 to 1.110.0 ([6ea3907](https://github.com/wmfs/tymly-cli-rest-client/commit/6ea3907ea44b7f039f76dae2a27f13328eb0a40c))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.110.0 to 1.112.0 ([8713e45](https://github.com/wmfs/tymly-cli-rest-client/commit/8713e451e0dee77f98e61410c478995e61c3f36c))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.112.0 to 1.112.1 ([5f42fff](https://github.com/wmfs/tymly-cli-rest-client/commit/5f42fff752bea81a13db4419a181ed2328986468))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.112.1 to 1.113.0 ([9cb5e11](https://github.com/wmfs/tymly-cli-rest-client/commit/9cb5e11913342484dd65e89c93497928fc37a2ca))
+* **deps-dev:** bump codecov from 3.6.1 to 3.6.2 ([8fa8097](https://github.com/wmfs/tymly-cli-rest-client/commit/8fa8097d379ae1b85154b9c5a96a9ea4a94916a4))
+* **deps-dev:** bump conventional-changelog-metahub from 3.0.0 to 4.0.0 ([5e4734b](https://github.com/wmfs/tymly-cli-rest-client/commit/5e4734b67ff2c877d42db3570ac83a43fa7bdabf))
+* **deps-dev:** bump mocha from 6.2.2 to 7.0.0 ([b1ca793](https://github.com/wmfs/tymly-cli-rest-client/commit/b1ca793bad6231388ae634e132feb6a5e10d8cc1))
+* **deps-dev:** bump mocha from 7.0.0 to 7.0.1 ([9bd8dba](https://github.com/wmfs/tymly-cli-rest-client/commit/9bd8dbaef69d517e9107fb6418be9c498f9e5554))
+* **deps-dev:** bump packages ([536fd54](https://github.com/wmfs/tymly-cli-rest-client/commit/536fd5447c097e3f439b0cb5e1e44d4f5229b559))
+
 ## [1.4.1](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.4.0...v1.4.1) (2019-11-12)
 
 
