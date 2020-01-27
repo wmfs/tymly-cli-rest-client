@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.5.0...v1.6.0) (2020-01-27)
+
+
+### 🛠 Builds
+
+* **deps:** bump chalk from 2.4.2 to 3.0.0 ([6cd5e6b](https://github.com/wmfs/tymly-cli-rest-client/commit/6cd5e6b5ec87be6ed5e801e53624a99839b79017))
+* **deps-dev:** update standard requirement from 12.0.1 to 14.3.1 ([314c393](https://github.com/wmfs/tymly-cli-rest-client/commit/314c393cc7aac085cfa0dea55888a95040fd0b77))
+
+
+### 💎 Styles
+
+* standard --fix ([1deeb34](https://github.com/wmfs/tymly-cli-rest-client/commit/1deeb34689c08a1e6a57c36b20b0069859d0e3e0))
+
 # [1.5.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.4.1...v1.5.0) (2020-01-27)
 
 
