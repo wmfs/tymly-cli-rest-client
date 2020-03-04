@@ -5,7 +5,6 @@
     "instigatingClient": {
       "appName": "tymly-cli",
       "domain": "cli"
-    },
-    "sendResponse": "COMPLETE"
+    }
   }
 }
