@@ -1,3 +1,59 @@
+# [1.8.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.7.0...v1.8.0) (2020-08-24)
+
+
+### 🛠 Builds
+
+* **deps:** bump axios from 0.19.2 to 0.20.0 ([780391d](https://github.com/wmfs/tymly-cli-rest-client/commit/780391db4afa987e1a8964767601a897694543c9))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.130.0 to 1.131.0 ([dd2e4f5](https://github.com/wmfs/tymly-cli-rest-client/commit/dd2e4f528bea00121b77a46910de511c6c40adf9))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.131.0 to 1.135.0 ([e8f84ba](https://github.com/wmfs/tymly-cli-rest-client/commit/e8f84bac2bf884c33602577f1fc9dacf50fe5a13))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.135.0 to 1.135.1 ([a94c129](https://github.com/wmfs/tymly-cli-rest-client/commit/a94c1296f6b7079a8a3d8813cce08eb49d86a6c1))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.135.1 to 1.135.2 ([75e5d07](https://github.com/wmfs/tymly-cli-rest-client/commit/75e5d079be0c325eb7783ff14fce5c6d6e6a9d54))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.135.2 to 1.136.0 ([871d1cf](https://github.com/wmfs/tymly-cli-rest-client/commit/871d1cfc955a3037b0daa0e493d045de1964ef01))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.136.0 to 1.137.0 ([4e2f104](https://github.com/wmfs/tymly-cli-rest-client/commit/4e2f1045398c676ca2f0da5ae89f239654b33326))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.137.0 to 1.137.1 ([1fc4de0](https://github.com/wmfs/tymly-cli-rest-client/commit/1fc4de080e519ef451197f8d4f27d2e51207b6bb))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.137.1 to 1.137.2 ([1c42b6f](https://github.com/wmfs/tymly-cli-rest-client/commit/1c42b6f05104f12428bfe7ae4bd61d063e794390))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.137.2 to 1.137.3 ([9f65b4c](https://github.com/wmfs/tymly-cli-rest-client/commit/9f65b4c8b37c438f3edd12d76ff322b9d9019602))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.137.3 to 1.138.0 ([22932b8](https://github.com/wmfs/tymly-cli-rest-client/commit/22932b8304e158faee5c75f2deddf6b2b79382cb))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.138.0 to 1.140.0 ([7cfa2ca](https://github.com/wmfs/tymly-cli-rest-client/commit/7cfa2ca516ba412e19fc32e20287c9374bed207b))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.140.0 to 1.141.0 ([8d1e410](https://github.com/wmfs/tymly-cli-rest-client/commit/8d1e410c9424e7722e77633fd6d6be912b51b54d))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.141.0 to 1.142.0 ([e41a16e](https://github.com/wmfs/tymly-cli-rest-client/commit/e41a16e40169ca1682ab297ee72d6108de07bd4d))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.142.0 to 1.143.0 ([ccc23a1](https://github.com/wmfs/tymly-cli-rest-client/commit/ccc23a1ef15e6c20f877c69274f4f83a2cb3334b))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.143.0 to 1.144.0 ([4b46156](https://github.com/wmfs/tymly-cli-rest-client/commit/4b4615630201481581c53f39e9a0b85255d24f48))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.144.0 to 1.145.0 ([3f6a156](https://github.com/wmfs/tymly-cli-rest-client/commit/3f6a1565c4e4fb84ee688edd1375be5c7d9e51c8))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.145.0 to 1.146.0 ([3595dc3](https://github.com/wmfs/tymly-cli-rest-client/commit/3595dc3c7ffd2a20504915d47af2decc461056f6))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.146.0 to 1.147.0 ([862788f](https://github.com/wmfs/tymly-cli-rest-client/commit/862788fa5d6d73108253cb273f8630ed6967e102))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.147.0 to 1.148.0 ([38e7cba](https://github.com/wmfs/tymly-cli-rest-client/commit/38e7cba25cd6d1b56e3356340a087c4cfcf508a4))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.148.0 to 1.149.0 ([6f612fe](https://github.com/wmfs/tymly-cli-rest-client/commit/6f612fed349c69e0799845fc7f1fa07e40370846))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.149.0 to 1.150.0 ([11dde9a](https://github.com/wmfs/tymly-cli-rest-client/commit/11dde9ab15b7d2c15dee6ac8c87d8d117adfed1f))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.150.0 to 1.152.0 ([17e79d9](https://github.com/wmfs/tymly-cli-rest-client/commit/17e79d9451d01c20eed44539aee9e7d3aa4160f4))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.152.0 to 1.153.0 ([7bd415d](https://github.com/wmfs/tymly-cli-rest-client/commit/7bd415d524b555b93cc45520986422c68e029c35))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.153.0 to 1.154.0 ([ea9da31](https://github.com/wmfs/tymly-cli-rest-client/commit/ea9da312f8f758161c5e324111c500e5fab087ff))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.154.0 to 1.155.0 ([d88786e](https://github.com/wmfs/tymly-cli-rest-client/commit/d88786e4d24bc162b3bfe8995585a26fb810859a))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.155.0 to 1.157.0 ([30c6605](https://github.com/wmfs/tymly-cli-rest-client/commit/30c6605be968a6548a67b737921829ca80fa0a76))
+* **deps-dev:** bump codecov from 3.6.5 to 3.7.0 ([762f2ff](https://github.com/wmfs/tymly-cli-rest-client/commit/762f2ff2ad04c49c338b4d79f2a98da5ef675c39))
+* **deps-dev:** bump codecov from 3.7.0 to 3.7.1 ([69590c1](https://github.com/wmfs/tymly-cli-rest-client/commit/69590c190ecab2f17ec31ffa4cd8867d46e05c57))
+* **deps-dev:** bump codecov from 3.7.1 to 3.7.2 ([840a833](https://github.com/wmfs/tymly-cli-rest-client/commit/840a833e6137da88f4d880b1ac42feab84746e50))
+* **deps-dev:** bump cz-conventional-changelog from 3.1.0 to 3.2.0 ([a832cbd](https://github.com/wmfs/tymly-cli-rest-client/commit/a832cbd19114d1323978e77d7b1da37028dacdc2))
+* **deps-dev:** bump mocha from 7.1.1 to 7.1.2 ([2e83e26](https://github.com/wmfs/tymly-cli-rest-client/commit/2e83e26487324b56196a26bb3ce360740ef7468c))
+* **deps-dev:** bump mocha from 7.1.2 to 7.2.0 ([a11f201](https://github.com/wmfs/tymly-cli-rest-client/commit/a11f2018fb3dc51c45f25148406322ece02201ed))
+* **deps-dev:** bump mocha from 7.2.0 to 8.0.1 ([b63a959](https://github.com/wmfs/tymly-cli-rest-client/commit/b63a9597d38e89e7459c6d307c03d4bfea3e89fc))
+* **deps-dev:** bump mocha from 8.0.1 to 8.1.0 ([9a3e83c](https://github.com/wmfs/tymly-cli-rest-client/commit/9a3e83cb208b0d634e174828a4b4a5d96c196664))
+* **deps-dev:** bump mocha from 8.1.0 to 8.1.1 ([b3e4f49](https://github.com/wmfs/tymly-cli-rest-client/commit/b3e4f49875f24f0e6c07d57f3a8407b86a33b04d))
+* **deps-dev:** bump nyc from 15.0.1 to 15.1.0 ([bdd06f8](https://github.com/wmfs/tymly-cli-rest-client/commit/bdd06f8f1a1e0fef75a923d3d7c5220e16b82512))
+* **deps-dev:** bump semantic-release from 17.0.4 to 17.0.5 ([1cd2ead](https://github.com/wmfs/tymly-cli-rest-client/commit/1cd2eadd0a2b015e8ca6b275af7d58aebb802294))
+* **deps-dev:** bump semantic-release from 17.0.5 to 17.0.6 ([b213f07](https://github.com/wmfs/tymly-cli-rest-client/commit/b213f07ad3616cb98b8e2658341eb334a15ece54))
+* **deps-dev:** bump semantic-release from 17.0.6 to 17.0.7 ([4b9eba9](https://github.com/wmfs/tymly-cli-rest-client/commit/4b9eba9e9cdaa76473036f7b81e41583bc0a9816))
+* **deps-dev:** bump semantic-release from 17.0.7 to 17.0.8 ([0e68b14](https://github.com/wmfs/tymly-cli-rest-client/commit/0e68b1452ad482b8e83e209aff32a32b0b8cfb5e))
+* **deps-dev:** bump semantic-release from 17.0.8 to 17.1.0 ([a672c1b](https://github.com/wmfs/tymly-cli-rest-client/commit/a672c1bed1b497ddfa526490f2851e335ca3a0b6))
+* **deps-dev:** bump semantic-release from 17.1.0 to 17.1.1 ([8907c73](https://github.com/wmfs/tymly-cli-rest-client/commit/8907c73e749dd633f32e279595d7a04c4538c592))
+* **deps-dev:** bump standard from 14.3.3 to 14.3.4 ([196d785](https://github.com/wmfs/tymly-cli-rest-client/commit/196d7853cee6785e57a3585c7a9204ce8a382385))
+
+
+### ⚙️ Continuous Integrations
+
+* **circle:** separate lint job [ch1009] ([4d78bc7](https://github.com/wmfs/tymly-cli-rest-client/commit/4d78bc7d5d9b7e6d579e5a8006191c331d7b315b))
+* **circle:** use updated circle node image [skip ci] ([ce19e44](https://github.com/wmfs/tymly-cli-rest-client/commit/ce19e448f500748d672fe70103984e1741248de2))
+
 # [1.7.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.6.1...v1.7.0) (2020-04-05)
 
 
