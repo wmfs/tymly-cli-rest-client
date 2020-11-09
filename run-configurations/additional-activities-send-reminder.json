@@ -3,7 +3,7 @@
   "input": {},
   "options": {
     "instigatingClient": {
-      "appName": "postman",
+      "appName": "tymly-cli",
       "domain": ""
     },
     "sendResponse": "COMPLETE"
