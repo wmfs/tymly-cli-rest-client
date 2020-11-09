@@ -1,3 +1,30 @@
+# [1.10.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.9.0...v1.10.0) (2020-11-09)
+
+
+### ✨ Features
+
+* add run configs for ppe and activity reminders ([d3844b1](https://github.com/wmfs/tymly-cli-rest-client/commit/d3844b110568c2f4ced9da14b3603189fe3dbe46))
+
+
+### 🛠 Builds
+
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.166.0 to 1.167.0 ([8d6f74b](https://github.com/wmfs/tymly-cli-rest-client/commit/8d6f74b753494fbc9b04c5c74adb1e29a3519e7b))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.167.0 to 1.168.0 ([3905a84](https://github.com/wmfs/tymly-cli-rest-client/commit/3905a846a82ba992cf9fcc5b3655743bbf85388d))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.168.0 to 1.169.0 ([56857cf](https://github.com/wmfs/tymly-cli-rest-client/commit/56857cfdee1b00b8c520f84e25a9b6de711f399e))
+* **deps-dev:** bump codecov from 3.8.0 to 3.8.1 ([1ff8f9e](https://github.com/wmfs/tymly-cli-rest-client/commit/1ff8f9efcb26b61a5c9d7827022d92da9b16782f))
+* **deps-dev:** bump mocha from 8.2.0 to 8.2.1 ([1db8d59](https://github.com/wmfs/tymly-cli-rest-client/commit/1db8d59c5303cc5d8b5f441b4b84aafeef87f929))
+* **deps-dev:** bump semantic-release from 17.2.1 to 17.2.2 ([ee49e34](https://github.com/wmfs/tymly-cli-rest-client/commit/ee49e34fd67f79872832c090439fc707e9d3cebe))
+* **deps-dev:** bump standard from 15.0.0 to 15.0.1 ([3930ac3](https://github.com/wmfs/tymly-cli-rest-client/commit/3930ac38ab159a4688e618e8cbf772f91ea81218))
+* **deps-dev:** bump standard from 15.0.1 to 16.0.0 ([7bfe407](https://github.com/wmfs/tymly-cli-rest-client/commit/7bfe40797dc2f60327d687937126d3a4c9b37d83))
+* **deps-dev:** bump standard from 16.0.0 to 16.0.1 ([d549d46](https://github.com/wmfs/tymly-cli-rest-client/commit/d549d46f9c4d71356d651d40c0867af6965b7907))
+* Exclude from tymly-sync ([c64ec93](https://github.com/wmfs/tymly-cli-rest-client/commit/c64ec93a563b922a9c412082dbbe5a42559e0c99))
+
+
+### ⚙️ Continuous Integrations
+
+* **circle:** separate linting job [ch1009] ([9c0907b](https://github.com/wmfs/tymly-cli-rest-client/commit/9c0907bd3a99d1354ba5bcd12fce53cbfbcb3b1e))
+* **circle:** update build environment variable context name [ch2771] ([88f35f9](https://github.com/wmfs/tymly-cli-rest-client/commit/88f35f9df8b48ed76b198511625a88739a33ee70))
+
 # [1.9.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.8.0...v1.9.0) (2020-10-26)
 
 
