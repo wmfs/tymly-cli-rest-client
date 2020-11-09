@@ -1,3 +1,16 @@
+# [1.11.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.10.0...v1.11.0) (2020-11-09)
+
+
+### ✨ Features
+
+* add new run configs to index ([3fd2563](https://github.com/wmfs/tymly-cli-rest-client/commit/3fd256372c10c207186fea4dd2dd24e0ed8ec4b9))
+
+
+### 🐛 Bug Fixes
+
+* update appName and domain ([1acc1cd](https://github.com/wmfs/tymly-cli-rest-client/commit/1acc1cdfc742321b151c468e86ac00f8bb0683ce))
+* update appName and domain ([cf923f0](https://github.com/wmfs/tymly-cli-rest-client/commit/cf923f052d7c0dc696a21b5d056b261244c1659e))
+
 # [1.10.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.9.0...v1.10.0) (2020-11-09)
 
 
