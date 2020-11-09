@@ -1,0 +1,11 @@
+{
+  "stateMachineName": "nfcc_additionalActivitiesSendReminder_1_0",
+  "input": {},
+  "options": {
+    "instigatingClient": {
+      "appName": "postman",
+      "domain": ""
+    },
+    "sendResponse": "COMPLETE"
+  }
+}
