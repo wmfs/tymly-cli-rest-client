@@ -1,3 +1,17 @@
+# [1.12.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.11.0...v1.12.0) (2020-11-16)
+
+
+### ✨ Features
+
+* run config for cno reminders ([7449fef](https://github.com/wmfs/tymly-cli-rest-client/commit/7449fef1994ff39bd298606117ee1e35c9a5e7c3))
+
+
+### 🛠 Builds
+
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.169.0 to 1.170.0 ([9f095ee](https://github.com/wmfs/tymly-cli-rest-client/commit/9f095ee9bce250ced3e60dd8bbe73f64d356f2b8))
+* **deps-dev:** bump [@wmfs](https://github.com/wmfs)/tymly from 1.170.0 to 1.171.0 ([6706182](https://github.com/wmfs/tymly-cli-rest-client/commit/6706182eba73a0801a30bb2b9cd1552ffc0c8861))
+* **deps-dev:** bump standard from 16.0.1 to 16.0.2 ([8b46d4c](https://github.com/wmfs/tymly-cli-rest-client/commit/8b46d4c674976ddeb7ba9340f65e33e04f5dd60c))
+
 # [1.11.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.10.0...v1.11.0) (2020-11-09)
 
 
