@@ -1,6 +1,8 @@
 {
   "stateMachineName": "nfcc_ppeStockSendReminder_1_0",
-  "input": {},
+  "input": {
+    "daySent": "WEDNESDAY"
+  },
   "options": {
     "instigatingClient": {
       "appName": "tymly-cli",
