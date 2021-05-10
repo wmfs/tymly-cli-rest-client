@@ -46,7 +46,7 @@
     "standard": "16.0.3",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
-    "@wmfs/tymly": "1.199.0"
+    "@wmfs/tymly": "1.200.0"
   },
   "config": {
     "commitizen": {
