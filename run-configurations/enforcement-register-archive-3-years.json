@@ -1,0 +1,10 @@
+{
+  "stateMachineName": "nfcc_enforcementRegisterArchive3Years_1_0",
+  "input": {},
+  "options": {
+    "instigatingClient": {
+      "appName": "tymly-cli",
+      "domain": "cli"
+    }
+  }
+}
