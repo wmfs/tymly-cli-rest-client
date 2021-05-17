@@ -8,5 +8,6 @@ module.exports = {
   ppeStockSendReminder: require('./ppe-stock-send-reminder.json'),
   additionalActivitiesSendReminder: require('./additional-activities-send-reminder.json'),
   workforceSendReminder: require('./workforce-send-reminder.json'),
-  sendCnoReminders: require('./send-cno-reminders.json')
+  sendCnoReminders: require('./send-cno-reminders.json'),
+  enforcementRegisterArchive3Years: require('./enforcement-register-archive-3-years.json')
 }
