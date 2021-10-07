@@ -6,6 +6,7 @@ module.exports = {
   fullReindex: require('./full-reindex.json'),
   checkSawApptNotifications: require('./check-saw-appt-notifications.json'),
   ppeStockSendReminder: require('./ppe-stock-send-reminder.json'),
+  smokeAlarmStockUsageSendReminder: require('./smoke-alarm-stock-usage-send-reminder.json'),
   additionalActivitiesSendReminder: require('./additional-activities-send-reminder.json'),
   workforceSendReminder: require('./workforce-send-reminder.json'),
   sendCnoReminders: require('./send-cno-reminders.json'),
