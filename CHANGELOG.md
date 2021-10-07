@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.15.0...v1.16.0) (2021-10-07)
+
+
+### ✨ Features
+
+* smoke alarm stock usage send reminder run config ([03e1709](https://github.com/wmfs/tymly-cli-rest-client/commit/03e1709dc4523862ac16b6d60596953eb59472b5))
+
 # [1.15.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.14.0...v1.15.0) (2021-09-28)
 
 
