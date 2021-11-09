@@ -11,5 +11,6 @@ module.exports = {
   workforceSendReminder: require('./workforce-send-reminder.json'),
   sendCnoReminders: require('./send-cno-reminders.json'),
   enforcementRegisterArchive3Years: require('./enforcement-register-archive-3-years.json'),
-  archiveStaleExecution: require('./archive-stale-executions.json')
+  archiveStaleExecution: require('./archive-stale-executions.json'),
+  sendCnoReferralIncidentNotifications: require('./send-cno-referral-incident-notifications.json')
 }
