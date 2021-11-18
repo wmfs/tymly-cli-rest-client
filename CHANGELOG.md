@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.16.0...v1.17.0) (2021-11-18)
+
+
+### ✨ Features
+
+* add config for cno referral incident notification [sc-1677] ([47686dd](https://github.com/wmfs/tymly-cli-rest-client/commit/47686dd782473b7bb30861b630c0a3f029d895e6))
+
 # [1.16.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.15.0...v1.16.0) (2021-10-07)
 
 
