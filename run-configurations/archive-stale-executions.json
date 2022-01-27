@@ -6,6 +6,6 @@
       "appName": "tymly-cli",
       "domain": "cli"
     },
-    "sendResponse": "AFTER_RESOURCE_CALLBACK.TYPE:awaitingHumanInput"
+    "sendResponse": "COMPLETE"
   }
 }
