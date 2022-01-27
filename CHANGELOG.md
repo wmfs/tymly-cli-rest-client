@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.17.0...v1.17.1) (2022-01-27)
+
+
+### 🐛 Bug Fixes
+
+* update send response to COMPLETE ([9a03b46](https://github.com/wmfs/tymly-cli-rest-client/commit/9a03b469f43a7318295cab2c351f78de5c8e6570))
+
 # [1.17.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.16.0...v1.17.0) (2021-11-18)
 
 
