@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.17.1...v1.18.0) (2022-02-23)
+
+
+### ✨ Features
+
+* add PPRU reminders ([c221dc5](https://github.com/wmfs/tymly-cli-rest-client/commit/c221dc5c9d7e556c86a2eab0cc901e89c51b11ea))
+
 ## [1.17.1](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.17.0...v1.17.1) (2022-01-27)
 
 
