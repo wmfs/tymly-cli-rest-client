@@ -1,0 +1,11 @@
+{
+  "stateMachineName": "nfccPpru_sendReminderHeadOfProtection_1_0",
+  "input": {},
+  "options": {
+    "instigatingClient": {
+      "appName": "tymly-cli",
+      "domain": "cli"
+    },
+    "sendResponse": "COMPLETE"
+  }
+}

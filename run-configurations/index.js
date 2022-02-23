@@ -12,5 +12,7 @@ module.exports = {
   sendCnoReminders: require('./send-cno-reminders.json'),
   enforcementRegisterArchive3Years: require('./enforcement-register-archive-3-years.json'),
   archiveStaleExecution: require('./archive-stale-executions.json'),
-  sendCnoReferralIncidentNotifications: require('./send-cno-referral-incident-notifications.json')
+  sendCnoReferralIncidentNotifications: require('./send-cno-referral-incident-notifications.json'),
+  ppruReminderAwaitingApproval: require('./ppru-reminder-awaiting-approval.json'),
+  ppruReminderHeadOfProtection: require('./ppru-reminder-head-of-protection.json')
 }
