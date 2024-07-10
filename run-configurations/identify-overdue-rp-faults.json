@@ -1,0 +1,12 @@
+{
+  "timeout": 5000,
+  "stateMachineName": "rpFault_identifyOverdue_1_0",
+  "input": {},
+  "options": {
+    "instigatingClient": {
+      "appName": "tymly-cli",
+      "domain": "cli"
+    },
+    "sendResponse": "AFTER_RESOURCE_CALLBACK.TYPE:awaitingHumanInput"
+  }
+}
