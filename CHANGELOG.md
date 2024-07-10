@@ -1,3 +1,22 @@
+# [1.19.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.18.0...v1.19.0) (2024-07-10)
+
+
+### ✨ Features
+
+* **(pin 262) crr dd:** [sc-26076] Identify overdue tasks [#319](https://github.com/wmfs/tymly-cli-rest-client/issues/319) ([cfba799](https://github.com/wmfs/tymly-cli-rest-client/commit/cfba7990e430ae25cd78404ebb84b40298a43bc3))
+
+
+### 🛠 Builds
+
+* **deps:** revert deps ([a89c425](https://github.com/wmfs/tymly-cli-rest-client/commit/a89c4258eb166e7197e7b7a66f6017656c681b00))
+* **deps:** update all deps [#337](https://github.com/wmfs/tymly-cli-rest-client/issues/337) ([2090b22](https://github.com/wmfs/tymly-cli-rest-client/commit/2090b224c37f4326ff85dfdafeb7904cee54a5b5))
+
+
+### ♻️ Chores
+
+* add renovate config ([ae42c9b](https://github.com/wmfs/tymly-cli-rest-client/commit/ae42c9b99684c0dd8e136bba676cefbed61a2862))
+* change main script ([56b7967](https://github.com/wmfs/tymly-cli-rest-client/commit/56b7967543076c2def5ac2195af8476f54ba550d))
+
 # [1.18.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.17.1...v1.18.0) (2022-02-23)
 
 
