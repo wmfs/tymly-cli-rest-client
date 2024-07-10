@@ -2,7 +2,7 @@
   "name": "@wmfs/tymly-cli-rest-client",
   "version": "0.0.0-semantically-released",
   "description": "CLI tool to launch Tymly State Machines over REST",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "keywords": [
     "cli",
     "tymly",
