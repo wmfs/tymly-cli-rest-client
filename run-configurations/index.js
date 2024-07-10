@@ -14,5 +14,6 @@ module.exports = {
   archiveStaleExecution: require('./archive-stale-executions.json'),
   sendCnoReferralIncidentNotifications: require('./send-cno-referral-incident-notifications.json'),
   ppruReminderAwaitingApproval: require('./ppru-reminder-awaiting-approval.json'),
-  ppruReminderHeadOfProtection: require('./ppru-reminder-head-of-protection.json')
+  ppruReminderHeadOfProtection: require('./ppru-reminder-head-of-protection.json'),
+  identifyOverdueRpFaults: require('./identify-overdue-rp-faults.json')
 }
