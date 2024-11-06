@@ -20,13 +20,12 @@ describe('tymly-cli tests', function () {
       (err, stdout, stderr) => {
         if (hasEnv) {
           expect(err).to.eql(null)
-          console.log(`stdout: '${stdout}'`)
-          console.log(`stderr: '${stderr}'`)
         } else {
           expect(err).to.not.eql(null)
           expect(stderr).to.not.eql(null)
           expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
         }
+
         done()
       }
     )
@@ -39,8 +38,11 @@ describe('tymly-cli tests', function () {
         expect(err).to.not.eql(null)
         expect(stderr).to.not.eql(null)
 
-        if (hasEnv) expect(stdout.split('\n').includes('You must specify a command')).to.eql(true)
-        else expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
+        if (hasEnv) {
+          expect(stdout.split('\n')[5].includes('You must specify a command')).to.eql(true)
+        } else {
+          expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
+        }
 
         done()
       }
@@ -54,8 +56,11 @@ describe('tymly-cli tests', function () {
         expect(err).to.not.eql(null)
         expect(stderr).to.not.eql(null)
 
-        if (hasEnv) expect(stdout.split('\n').includes('Unknown config: \'searchStuff\'')).to.eql(true)
-        else expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
+        if (hasEnv) {
+          expect(stdout.split('\n')[5].includes('Unknown config: \'searchStuff\'')).to.eql(true)
+        } else {
+          expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
+        }
 
         done()
       }
