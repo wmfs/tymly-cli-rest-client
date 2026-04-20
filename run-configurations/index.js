@@ -15,5 +15,6 @@ module.exports = {
   sendCnoReferralIncidentNotifications: require('./send-cno-referral-incident-notifications.json'),
   ppruReminderAwaitingApproval: require('./ppru-reminder-awaiting-approval.json'),
   ppruReminderHeadOfProtection: require('./ppru-reminder-head-of-protection.json'),
-  identifyOverdueRpFaults: require('./identify-overdue-rp-faults.json')
+  identifyOverdueRpFaults: require('./identify-overdue-rp-faults.json'),
+  gazetteerImport: require('./gazetteer-import.json')
 }
