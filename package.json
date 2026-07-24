@@ -43,8 +43,8 @@
     "nyc": "17.1.0",
     "semantic-release": "25.0.2",
     "standard": "17.1.2",
-    "@semantic-release/changelog": "6.0.3",
-    "@semantic-release/git": "10.0.1",
+    "@semantic-release/changelog": "7.0.0",
+    "@semantic-release/git": "11.0.1",
     "@wmfs/tymly": "1.306.0"
   },
   "config": {
