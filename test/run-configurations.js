@@ -43,13 +43,10 @@ describe('run configurations', () => {
         }
       })
 
-      it('waits for a response that will arrive', () => {
-        // Waiting for a resource callback the state machine never makes means a timeout and a
-        // failed cron job while the execution carries on.
-        const { sendResponse } = config.options
-        if (sendResponse && sendResponse.startsWith('AFTER_RESOURCE_CALLBACK')) {
-          expect(key).to.eql('incidentsInProgress') // its state machine awaits human input by design
-        }
+      it('responds when started or when finished', () => {
+        // Waiting for a resource callback (e.g. awaitingHumanInput) suits a user's card, not a cron job:
+        // nobody completes it, so the CLI times out while the execution carries on.
+        expect([undefined, 'IMMEDIATELY', 'COMPLETE']).to.include(config.options.sendResponse)
       })
 
       it('has a positive timeout if it sets one', () => {

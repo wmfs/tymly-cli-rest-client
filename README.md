@@ -83,7 +83,6 @@ What a `0` proves depends on the run configuration's `sendResponse`:
 | -------------- | -------------- | ----------- |
 | `COMPLETE` | when the state machine finishes | it finished and did not fail |
 | not set | as soon as the execution starts | it started; check Tymly for the outcome |
-| `AFTER_RESOURCE_CALLBACK...` | when the state machine reaches that point | it got that far |
 
 A run configuration can set `timeout` in milliseconds. Without one, the CLI waits up to 30 minutes. A timeout makes the CLI exit with `1`, but the execution carries on in Tymly.
 
@@ -102,43 +101,29 @@ npm lower-cases flag names, so `--dryRun` and `--dryrun` are the same flag. An i
 
 ## Commands
 
-| Command | State machine | Inputs (* = required) | Tymly responds |
-| ------- | ------------- | --------------------- | -------------- |
-| `additionalActivitiesSendReminder` | `nfcc_additionalActivitiesSendReminder_1_0` | | when finished |
+### Scheduled jobs
+
+These are run by cron on the Tymly server.
+
+| Command | State machine | Inputs | Tymly responds |
+| ------- | ------------- | ------ | -------------- |
 | `archiveStaleExecution` | `tymly_archiveStaleExecutions_1_0` | | when finished |
 | `checkSawApptNotifications` | `wmfs_checkSawApptNotifications_1_0` | | when finished |
-| `enforcementRegisterArchive3Years` | `nfcc_enforcementRegisterArchive3Years_1_0` | | when started |
 | `fullReindex` | `tymly_fullReindex_1_0` | | when finished |
 | `identifyOverdueRpFaults` | `rpFault_identifyOverdue_1_0` | dryRun | when finished |
-| `incidentsInProgress` | `wmfs_getIncidentsInProgress_1_0` | | when awaiting human input |
-| `ppeStockSendReminder` | `nfcc_ppeStockSendReminder_1_0` | | when finished |
-| `ppruReminderAwaitingApproval` | `nfccPpru_sendReminderAwaitingApproval_1_0` | | when finished |
-| `ppruReminderHeadOfProtection` | `nfccPpru_sendReminderHeadOfProtection_1_0` | | when finished |
 | `refreshAll` | `wmfs_runRefreshRankingAll_1_0` | | when started |
-| `refreshRanking` | `wmfs_refreshRanking_1_0` | schema*, category* | when finished |
-| `search` | `tymly_search_1_0` | query*, offset*, limit*, domain, orderBy, showActiveEventsOnly, lat, long, categoryRestriction | when finished |
 | `sendCnoReferralIncidentNotifications` | `wmfs_sendCnoReferralIncidentNotifications_1_0` | | when finished |
 | `sendCnoReminders` | `wmfs_sendCnoReminders_1_0` | | when finished |
-| `smokeAlarmStockUsageSendReminder` | `nfcc_smokeAlarmStockUsageSendReminder_1_0` | | when finished |
-| `workforceSendReminder` | `nfcc_workforceSendReminder_1_0` | | when finished |
 
-### Examples
+`fullReindex` needs the Auth0 client to have the `tymly_solrAdmin` role.
 
 ```bash
-$ npm run cli --command=additionalActivitiesSendReminder
 $ npm run cli --command=archiveStaleExecution
 $ npm run cli --command=checkSawApptNotifications
-$ npm run cli --command=enforcementRegisterArchive3Years
 $ npm run cli --command=fullReindex
-$ npm run cli --command=incidentsInProgress
-$ npm run cli --command=ppeStockSendReminder
-$ npm run cli --command=ppruReminderAwaitingApproval
-$ npm run cli --command=ppruReminderHeadOfProtection
 $ npm run cli --command=refreshAll
 $ npm run cli --command=sendCnoReferralIncidentNotifications
 $ npm run cli --command=sendCnoReminders
-$ npm run cli --command=smokeAlarmStockUsageSendReminder
-$ npm run cli --command=workforceSendReminder
 ```
 
 **Identify overdue RP faults.** `--dryRun=true` finds overdue faults and reports them without changing anything or sending Teams notifications. Leave the flag out for a normal run.
@@ -147,13 +132,22 @@ $ npm run cli --command=workforceSendReminder
 $ npm run cli --command=identifyOverdueRpFaults --dryRun=true
 ```
 
-**Refresh ranking.**
+### Manual commands
+
+These are for running by hand, for example to test the connection to Tymly. Don't schedule them.
+
+| Command | State machine | Inputs (* = required) | Tymly responds |
+| ------- | ------------- | --------------------- | -------------- |
+| `refreshRanking` | `wmfs_refreshRanking_1_0` | schema*, category* | when finished |
+| `search` | `tymly_search_1_0` | query*, offset*, limit*, domain, orderBy, showActiveEventsOnly, lat, long, categoryRestriction | when finished |
+
+Refresh the rankings for one category (`refreshAll` refreshes all of them):
 
 ```bash
 $ npm run cli --command=refreshRanking --schema=wmfs --category=factory
 ```
 
-**Search.**
+Search:
 
 ```bash
 $ npm run cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
@@ -169,11 +163,11 @@ $ npm run cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 --
    | `input` | Required (`{}` if none). Each key is an accepted flag; its value sets the type (see [Inputs](#inputs)) |
    | `required` | Optional. Inputs that must be passed |
    | `options.instigatingClient` | Required: `{ "appName": "tymly-cli", "domain": "cli" }` |
-   | `options.sendResponse` | Usually `COMPLETE`. Only wait for a resource callback if the state machine reaches it |
+   | `options.sendResponse` | `COMPLETE` to wait until the state machine finishes, or leave it out for long jobs so Tymly responds when the run starts. Don't wait for a resource callback such as `awaitingHumanInput`: that's for a user's card, and nobody will complete it |
    | `timeout` | Optional, in milliseconds. Defaults to 30 minutes |
 
 2. Register it in `run-configurations/index.js`. The key is the command name.
-3. Add it to the [Commands](#commands) table and add an example with `--command=<key>`. The tests check every command has one.
+3. Add it to the [Scheduled jobs](#scheduled-jobs) or [Manual commands](#manual-commands) table, with an example using `--command=<key>`. The tests check every command has one.
 4. Commit with a [conventional commit](https://www.conventionalcommits.org) message (`fix:`, `feat:`), and merge to `master`. CircleCI publishes the new version to npm.
 5. Ask the infrastructure team to install the new version and add or change the crontab entry.
 
