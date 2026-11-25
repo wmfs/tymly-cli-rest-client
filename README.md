@@ -65,7 +65,7 @@ $ npm run cli quiet --command=identifyOverdueRpFaults --dryRun=true
 Example crontab entry, run from the package directory:
 
 ```
-59 23 * * * cd <package directory> && npm run cli quiet --command=identifyOverdueRpFaults --dryRun=true >> <log file> 2>&1
+0 6 * * * cd <package directory> && npm run cli quiet --command=archiveStaleExecution >> <log file> 2>&1
 ```
 
 ### Exit codes
@@ -126,7 +126,7 @@ $ npm run cli --command=sendCnoReferralIncidentNotifications
 $ npm run cli --command=sendCnoReminders
 ```
 
-**Identify overdue RP faults.** `--dryRun=true` finds overdue faults and reports them without changing anything or sending Teams notifications. Leave the flag out for a normal run.
+**Identify overdue RP faults.** `--dryRun=true` finds overdue faults and reports them without changing anything or sending Teams notifications. Leave the flag out for a normal run, which marks faults as overdue and sends the notifications. Only schedule it with `--dryRun=true` while a dry run has been agreed.
 
 ```bash
 $ npm run cli --command=identifyOverdueRpFaults --dryRun=true
