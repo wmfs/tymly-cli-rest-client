@@ -25,9 +25,6 @@ jobs:
       - run:
           name: test
           command: npm test
-      - run:
-          name: codecov
-          command: npm run coverage
   lint:
     docker:
       - image: cimg/node:lts

@@ -1,34 +1,42 @@
 {
-  "branch": "master",
-  "analyzeCommits": {
-    "preset": "angular",
-    "releaseRules": [
-      {"type": "build", "scope":"deps", "release": "minor"}
-    ]
-  },
-  "verifyConditions": [
-    "@semantic-release/changelog",
-    "@semantic-release/npm",
-    "@semantic-release/git"
+  "branches": [
+    "master"
   ],
-  "generateNotes": {
-    "preset": "angular"
-  },
-  "prepare": [
-    {
-      "path": "@semantic-release/changelog",
-      "changelogFile": "CHANGELOG.md"
-    },
-    {
-      "path": "@semantic-release/git",
-      "assets": ["CHANGELOG.md"]
-    },
-    "@semantic-release/npm"
-  ],
-  "publish": [
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "build",
+            "scope": "deps",
+            "release": "minor"
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "angular"
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
     "@semantic-release/npm",
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md"
+        ]
+      }
+    ],
     "@semantic-release/github"
-  ],
-  "success": ["@semantic-release/github"],
-  "fail": ["@semantic-release/github"]
+  ]
 }
