@@ -49,7 +49,7 @@
       "path": "cz-conventional-changelog"
     },
     "tymly": {
-      "sync": false
+      "sync": true
     }
   },
   "publishConfig": {
