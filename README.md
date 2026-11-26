@@ -107,7 +107,7 @@ Flag names aren't case-sensitive, so `--dryRun` and `--dryrun` are the same flag
 
 ### Scheduled jobs
 
-These are run by cron on the Tymly server.
+These are meant to be run by cron on the Tymly server. Check the server's crontab for which ones are scheduled, and when.
 
 | Command | State machine | Inputs | Tymly responds |
 | ------- | ------------- | ------ | -------------- |
@@ -119,7 +119,7 @@ These are run by cron on the Tymly server.
 | `sendCnoReferralIncidentNotifications` | `wmfs_sendCnoReferralIncidentNotifications_1_0` | | when finished |
 | `sendCnoReminders` | `wmfs_sendCnoReminders_1_0` | | when finished |
 
-`fullReindex` needs the Auth0 client to have the `tymly_solrAdmin` role.
+`fullReindex` needs the Auth0 client to have the `tymly_solrAdmin` role. It finishes as soon as Solr has started the full import, so its exit code doesn't say whether the reindex itself worked.
 
 ```bash
 $ npm run cli -- --command=archiveStaleExecution
@@ -178,7 +178,7 @@ $ npm run cli -- --command=search --query=99_vauxhall_road --limit=10 --offset=0
 ## Development
 
 ```bash
-$ npm test      # unit and command line tests, with coverage
+$ npm test      # unit and command line tests; fails if coverage drops below the minimum in package.json
 $ npm run lint
 ```
 
