@@ -1,84 +1,58 @@
 /* eslint-env mocha */
 
+// End-to-end checks of the command line. None of these reach Auth0 or Tymly: each one
+// stops at a check that runs before any network request.
+
 const expect = require('chai').expect
-const exec = require('child_process').exec
+const { execFile } = require('child_process')
+const path = require('path')
+const { TEST_ENV } = require('./helpers')
 
-describe('tymly-cli tests', function () {
-  this.timeout(5000)
+const cwd = path.join(__dirname, '..')
 
-  const hasEnv = !!(
-    process.env.TYMLY_NIC_AUTH0_DOMAIN &&
-    process.env.TYMLY_NIC_AUTH0_CLIENT_ID &&
-    process.env.TYMLY_NIC_AUTH0_CLIENT_SECRET &&
-    process.env.TYMLY_AUTH_AUDIENCE &&
-    process.env.TYMLY_API_URL
-  )
+function npmRunCli (args, env) {
+  return new Promise(resolve => {
+    execFile('npm', ['run', '--silent', 'cli', ...args], { cwd, env: { PATH: process.env.PATH, ...env } },
+      (err, stdout, stderr) => resolve({ code: err ? err.code : 0, stdout, stderr }))
+  })
+}
 
-  it('should run the script successfully', done => {
-    exec(
-      'npm run cli --command=search --query=kebab --limit=12 --offset=0',
-      (err, stdout, stderr) => {
-        if (hasEnv) {
-          expect(err).to.eql(null)
-        } else {
-          expect(err).to.not.eql(null)
-          expect(stderr).to.not.eql(null)
-          expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
-        }
+describe('command line', function () {
+  this.timeout(20000)
 
-        done()
-      }
-    )
+  it('fails and lists missing environment variables', async () => {
+    const { code, stdout } = await npmRunCli(['--command=fullReindex'], {})
+    expect(code).to.eql(1)
+    expect(stdout).to.include('ERROR')
+    expect(stdout).to.include('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')
+    expect(stdout).to.include('Missing env var: TYMLY_API_URL')
   })
 
-  it('should run the script without a command specified', done => {
-    exec(
-      'npm run cli',
-      (err, stdout, stderr) => {
-        expect(err).to.not.eql(null)
-        expect(stderr).to.not.eql(null)
-
-        if (hasEnv) {
-          expect(stdout.split('\n')[5].includes('You must specify a command')).to.eql(true)
-        } else {
-          expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
-        }
-
-        done()
-      }
-    )
+  it('fails without a command', async () => {
+    const { code, stdout } = await npmRunCli([], TEST_ENV)
+    expect(code).to.eql(1)
+    expect(stdout).to.include('You must specify a command')
   })
 
-  it('should run the script with an unknown config command', done => {
-    exec(
-      'npm run cli --command=searchStuff ',
-      (err, stdout, stderr) => {
-        expect(err).to.not.eql(null)
-        expect(stderr).to.not.eql(null)
-
-        if (hasEnv) {
-          expect(stdout.split('\n')[5].includes('Unknown config: \'searchStuff\'')).to.eql(true)
-        } else {
-          expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
-        }
-
-        done()
-      }
-    )
+  it('fails with an unknown command', async () => {
+    const { code, stdout } = await npmRunCli(['--command=searchStuff'], TEST_ENV)
+    expect(code).to.eql(1)
+    expect(stdout).to.include("Unknown config: 'searchStuff'")
   })
 
-  it('should run the script with quiet flag', done => {
-    exec(
-      'npm run cli quiet --command=incidentsInProgress',
-      (err, stdout, stderr) => {
-        if (hasEnv) {
-          expect(err).to.eql(null)
-        } else {
-          expect(err).to.not.eql(null)
-          expect(stdout.split('\n').includes('Missing env var: TYMLY_NIC_AUTH0_DOMAIN')).to.eql(true)
-        }
-        done()
-      }
-    )
+  it('receives flags after -- untouched, including names npm uses itself', async () => {
+    // Without --, npm would pass --long=abc as npm_config_long=true. An invalid value proves
+    // the real value arrived, and stops the run before it requests a token.
+    const { code, stdout } = await npmRunCli(['--', '--command=search', '--query=x', '--offset=0', '--limit=1', '--long=abc'], TEST_ENV)
+    expect(code).to.eql(1)
+    expect(stdout).to.include("Invalid value for long: 'abc'")
+  })
+
+  it('receives camelCase flags from npm', async () => {
+    // npm passes --dryRun as npm_config_dryrun. An invalid value proves the flag arrived,
+    // and stops the run before it requests a token.
+    const { code, stdout } = await npmRunCli(['--command=identifyOverdueRpFaults', '--dryRun=yes'], TEST_ENV)
+    expect(code).to.eql(1)
+    expect(stdout).to.include("Invalid value for dryRun: 'yes'")
   })
 })

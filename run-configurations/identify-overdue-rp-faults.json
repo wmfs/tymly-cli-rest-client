@@ -1,12 +1,14 @@
 {
-  "timeout": 5000,
+  "timeout": 300000,
   "stateMachineName": "rpFault_identifyOverdue_1_0",
-  "input": {},
+  "input": {
+    "dryRun": false
+  },
   "options": {
     "instigatingClient": {
       "appName": "tymly-cli",
       "domain": "cli"
     },
-    "sendResponse": "AFTER_RESOURCE_CALLBACK.TYPE:awaitingHumanInput"
+    "sendResponse": "COMPLETE"
   }
 }

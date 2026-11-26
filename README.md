@@ -1,123 +1,197 @@
-# tymly-cli
+# tymly-cli-rest-client
 
-[![npm (scoped)](https://img.shields.io/npm/v/@wmfs/tymly-cli.svg)](https://www.npmjs.com/package/@wmfs/tymly-cli) [![CircleCI](https://circleci.com/gh/wmfs/tymly-cli-rest-client.svg?style=svg)](https://circleci.com/gh/wmfs/tymly-cli-rest-client) [![codecov](https://codecov.io/gh/wmfs/tymly-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/wmfs/tymly-cli) [![CodeFactor](https://www.codefactor.io/repository/github/wmfs/tymly-cli/badge)](https://www.codefactor.io/repository/github/wmfs/tymly-cli) [![Dependabot badge](https://img.shields.io/badge/Dependabot-active-brightgreen.svg)](https://dependabot.com/) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wmfs/tymly-cli/blob/master/LICENSE)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwmfs%2Ftymly-cli.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwmfs%2Ftymly-cli?ref=badge_shield)
+[![npm (scoped)](https://img.shields.io/npm/v/@wmfs/tymly-cli-rest-client.svg)](https://www.npmjs.com/package/@wmfs/tymly-cli-rest-client) [![CircleCI](https://circleci.com/gh/wmfs/tymly-cli-rest-client.svg?style=svg)](https://circleci.com/gh/wmfs/tymly-cli-rest-client) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wmfs/tymly-cli-rest-client/blob/master/LICENSE)
 
-> CLI tool to launch Tymly State Machines over REST
+> Starts Tymly state machines over REST. Cron jobs on the Tymly server use it to run scheduled jobs.
 
-## <a name="install"></a>Install
-```bash
-$ npm install tymly-cli --save
-```
+Scheduled jobs are planned to move into Tymly itself (tymly-schedule-plugin), after which this package will be retired.
 
-## <a name="usage"></a>Usage
+## Contents
 
-```bash
-$ npm run cli --command configKey
-```
+1. [How it works](#how-it-works)
+2. [Install](#install)
+3. [Environment variables](#environment-variables)
+4. [Running a job](#running-a-job)
+5. [Inputs](#inputs)
+6. [Commands](#commands)
+7. [Adding or changing a job](#adding-or-changing-a-job)
+8. [Development](#development)
+9. [Security](#security)
 
-### --command
-Key of the configuration you want to run, it must match with a config command. e.g. search, refreshRanking
+## How it works
 
-Each config will have it's own set of input values and must be added as extra flags.
-For example, if you wish to launch the search state machine you can pass in a query, a limit and an offset so the command will look like the following:
+1. A cron job runs `npm run cli -- --command=<command>` in the package directory, with any inputs as extra flags.
+2. The CLI gets a token from Auth0 using the client credentials grant.
+3. It posts the command's state machine name, input and options to `<TYMLY_API_URL>/executions`.
+4. It waits for the response the run configuration asks for (see [Exit codes](#exit-codes)), then exits.
 
-```bash
-$ npm run cli --command=search --query=kebab --limit=12 --offset=0
-```
+Each command is a run configuration in the `run-configurations` directory.
 
-To find the input flags, you can look in the run-configurations directory and find the state machine you wish to run.
-
-### quiet | q
-Including 'quiet' in the command will make it run in 'quiet mode' and does not put anything onto the console
+## Install
 
 ```bash
-$ npm run cli quiet --command=incidentsInProgress
+$ npm install @wmfs/tymly-cli-rest-client
+$ npm ls @wmfs/tymly-cli-rest-client    # check the installed version
 ```
 
-```bash
-$ npm run cli q --command=incidentsInProgress
-```
+Releases are published to npm automatically when changes are merged to `master`.
 
-## <a name="runConfig"></a>Run Configurations
+## Environment variables
 
-1. [Incidents In Progress](#incidentsInProgress)
-2. [Search](#search)
-3. [Refresh Ranking](#refreshRanking)
-4. [Refresh All](#refreshAll)
-
-### <a name="incidentsInProgress"></a>Incidents In Progress
-
-```bash
-$ npm run cli --command=incidentsInProgress
-```
-
-### <a name="search"></a>Search
-
-#### Inputs:
-* query (required)
-* limit (required)
-* offset (required)
-* domain
-* orderBy
-* showActiveEventsOnly
-* lat
-* long
-* categoryRestriction
-
-```bash
-$ npm run cli --command=search --query=kebabs --limit=10 --offset=0 
-```
-
-When a value to any of the inputs contains multiple words then separate them with underscores. See query:
-
-```bash
-$ npm run cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 
-```
-
-When a value to any of the inputs is an array then separate them with commas. See categoryRestriction:
-
-```bash
-$ npm run cli --command=search --query=kebabs --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
-```
-
-### <a name="refreshRanking"></a>Refresh Ranking
-
-#### Inputs:
-* schema (required)
-* category (required)
-
-```bash
-$ npm run cli --command=refreshRanking --schema=wmfs --category=factory 
-```
-
-## <a name="refreshAll"></a>Refresh All
-
-```bash
-$ npm run cli --command=refreshAll
-```
-
-## <a name="buildEnv"></a>Build environment variables
 | Environment Variable | Notes | Example |
 | -------------------- | ----- | ------- |
-| `TYMLY_API_URL`     | The base URL of Tymly (Required) | `http://localhost:3210` |
-| `TYMLY_NIC_AUTH0_CLIENT_ID`     | The client ID (as supplied by Auth0) (Required) | `abc...` |
-| `TYMLY_NIC_AUTH0_CLIENT_SECRET`  | The client secret (as supplied by Auth0) (Required) | `abc...` |
-| `TYMLY_NIC_AUTH0_DOMAIN` | The client domain (as supplied by Auth0) (Required) | `abc.de.auth0.com` |
-| `TYMLY_AUTH_AUDIENCE` | The Tymly audience (Required) | `abc...` |
-| `DEBUG` | To enable debug statements (Optional) | `tymly-cli` |
-| `WEB_API_TIMEOUT_IN_MS` | Specify a timeout. Default to 3000. (Optional) | `5000` |
+| `TYMLY_API_URL` | The base URL of Tymly (required) | `http://localhost:3210` |
+| `TYMLY_NIC_AUTH0_DOMAIN` | The Auth0 domain (required) | `abc.de.auth0.com` |
+| `TYMLY_NIC_AUTH0_CLIENT_ID` | The Auth0 client ID (required) | `abc...` |
+| `TYMLY_NIC_AUTH0_CLIENT_SECRET` | The Auth0 client secret (required) | `abc...` |
+| `TYMLY_AUTH_AUDIENCE` | The Tymly audience (required) | `abc...` |
+| `WEB_API_TIMEOUT_IN_MS` | Timeout for the Auth0 token request. Defaults to 3000 (optional) | `5000` |
+| `DEBUG` | Turns on debug output (optional). Don't set it for scheduled jobs. | `tymly-cli` |
 
-Once the environment variables have been set, you can run the tests like this:
+If any required variable is missing, the CLI lists them all and exits with code 1.
+
+## Running a job
 
 ```bash
-$ npm test
+$ npm run cli -- --command=<command> [--<input>=<value> ...]
 ```
 
+Put the flags after `--`, and write them as `--name=value`. npm then passes them to the CLI untouched.
 
-## <a name="license"></a>License
+Without the `--`, npm reads each flag as one of its own settings and passes it on as an environment variable. That still works for most flags, so older crontab entries keep running, but flags that are also npm settings lose their value: `--long=-2.0` arrives as `true`, and `--dryRun=false` arrives empty. npm also plans to stop passing unknown flags on this way. If a flag is given both ways, the one after `--` wins.
 
-[MIT](https://github.com/wmfs/tymly-cli/blob/master/LICENSE)
+Add `quiet` (or `q`) to print nothing except errors:
 
+```bash
+$ npm run cli -- quiet --command=identifyOverdueRpFaults --dryRun=true
+```
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwmfs%2Ftymly-cli.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwmfs%2Ftymly-cli?ref=badge_large)
+Example crontab entry, run from the package directory:
+
+```
+0 6 * * * cd <package directory> && npm run cli -- quiet --command=archiveStaleExecution >> <log file> 2>&1
+```
+
+### Exit codes
+
+| Code | Meaning |
+| ---- | ------- |
+| `0` | The request succeeded. What that proves depends on the command's response type (below). |
+| `1` | Something failed. The reason is printed after `ERROR`. |
+
+The CLI exits with `1` when an environment variable or input is missing or invalid, the command is unknown, the token request fails, the request to Tymly fails or times out, or the state machine returns `FAILED`.
+
+What a `0` proves depends on the run configuration's `sendResponse`:
+
+| `sendResponse` | Tymly responds | A `0` means |
+| -------------- | -------------- | ----------- |
+| `COMPLETE` | when the state machine finishes | it finished and did not fail |
+| `IMMEDIATELY` (or not set) | as soon as the execution starts | Tymly accepted it and it started. It doesn't say whether it finished: check Tymly for the outcome |
+
+A run configuration can set `timeout` in milliseconds. Without one, the CLI waits up to 30 minutes. For jobs that take longer than that, such as `refreshAll`, use `IMMEDIATELY` rather than a longer timeout. A timeout makes the CLI exit with `1`, but the execution carries on in Tymly. A proxy or load balancer in front of the Tymly API may close a long request sooner (an HTTP 504), with the same result.
+
+## Inputs
+
+Only the flags you pass are sent to the state machine. The values in a run configuration's `input` are examples that set each input's type, not defaults:
+
+| Example value | Flag | Sent as |
+| ------------- | ---- | ------- |
+| `""` (string) | `--query=99_vauxhall_road` | `"99 vauxhall road"` (underscores become spaces) |
+| `0` (number) | `--limit=12` | `12` |
+| `false` (boolean) | `--dryRun=true` | `true` (only `true` or `false` are accepted) |
+| `[]` (array) | `--categoryRestriction=gazetteer,fireSafety` | `["gazetteer", "fireSafety"]` |
+
+Flag names aren't case-sensitive, so `--dryRun` and `--dryrun` are the same flag. An invalid value, including a blank number, stops the CLI before anything is started.
+
+## Commands
+
+### Scheduled jobs
+
+These are meant to be run by cron on the Tymly server. Check the server's crontab for which ones are scheduled, and when.
+
+| Command | State machine | Inputs | Tymly responds |
+| ------- | ------------- | ------ | -------------- |
+| `archiveStaleExecution` | `tymly_archiveStaleExecutions_1_0` | | when finished |
+| `checkSawApptNotifications` | `wmfs_checkSawApptNotifications_1_0` | | when finished |
+| `fullReindex` | `tymly_fullReindex_1_0` | | when finished |
+| `identifyOverdueRpFaults` | `rpFault_identifyOverdue_1_0` | dryRun | when finished |
+| `refreshAll` | `wmfs_runRefreshRankingAll_1_0` | | when started |
+| `sendCnoReferralIncidentNotifications` | `wmfs_sendCnoReferralIncidentNotifications_1_0` | | when finished |
+| `sendCnoReminders` | `wmfs_sendCnoReminders_1_0` | | when finished |
+
+`fullReindex` needs the Auth0 client to have the `tymly_solrAdmin` role. It finishes as soon as Solr has started the full import, so its exit code doesn't say whether the reindex itself worked.
+
+```bash
+$ npm run cli -- --command=archiveStaleExecution
+$ npm run cli -- --command=checkSawApptNotifications
+$ npm run cli -- --command=fullReindex
+$ npm run cli -- --command=refreshAll
+$ npm run cli -- --command=sendCnoReferralIncidentNotifications
+$ npm run cli -- --command=sendCnoReminders
+```
+
+**Identify overdue RP faults.** `--dryRun=true` finds overdue faults and reports them without changing anything or sending Teams notifications. Leave the flag out for a normal run, which marks faults as overdue and sends the notifications. Only schedule it with `--dryRun=true` while a dry run has been agreed.
+
+```bash
+$ npm run cli -- --command=identifyOverdueRpFaults --dryRun=true
+```
+
+### Manual commands
+
+These are for running by hand, for example to test the connection to Tymly. Don't schedule them.
+
+| Command | State machine | Inputs (* = required) | Tymly responds |
+| ------- | ------------- | --------------------- | -------------- |
+| `refreshRanking` | `wmfs_refreshRanking_1_0` | schema*, category* | when finished |
+| `search` | `tymly_search_1_0` | query*, offset*, limit*, domain, orderBy, showActiveEventsOnly, lat, long, categoryRestriction | when finished |
+
+Refresh the rankings for one category (`refreshAll` refreshes all of them):
+
+```bash
+$ npm run cli -- --command=refreshRanking --schema=wmfs --category=factory
+```
+
+Search:
+
+```bash
+$ npm run cli -- --command=search --query=99_vauxhall_road --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
+```
+
+## Adding or changing a job
+
+1. Add or edit a JSON file in `run-configurations`:
+
+   | Field | Notes |
+   | ----- | ----- |
+   | `stateMachineName` | Required, e.g. `rpFault_identifyOverdue_1_0` |
+   | `input` | Required (`{}` if none). Each key is an accepted flag; its value sets the type (see [Inputs](#inputs)) |
+   | `required` | Optional. Inputs that must be passed |
+   | `options.instigatingClient` | Required: `{ "appName": "tymly-cli", "domain": "cli" }` |
+   | `options.sendResponse` | `COMPLETE` to wait until the state machine finishes, or `IMMEDIATELY` for long jobs so Tymly responds as soon as the run starts. Don't wait for a resource callback such as `awaitingHumanInput`: that's for a user's card, and nobody will complete it |
+   | `timeout` | Optional, in milliseconds. Defaults to 30 minutes |
+
+2. Register it in `run-configurations/index.js`. The key is the command name.
+3. Add it to the [Scheduled jobs](#scheduled-jobs) or [Manual commands](#manual-commands) table, with an example using `--command=<key>`. The tests check every command has one.
+4. Commit with a [conventional commit](https://www.conventionalcommits.org) message (`fix:`, `feat:`), and merge to `master`. CircleCI publishes the new version to npm.
+5. Ask the infrastructure team to install the new version and add or change the crontab entry.
+
+## Development
+
+```bash
+$ npm test      # unit and command line tests; fails if coverage drops below the minimum in package.json
+$ npm run lint
+```
+
+The tests need no credentials and make no network requests.
+
+## Security
+
+- Credentials only come from environment variables. Never put them in a run configuration.
+- Don't set `DEBUG` for scheduled jobs.
+- Error messages never include the bearer token or the client secret.
+- The Auth0 client should only have the Tymly roles needed to start these state machines.
+- Dependencies are pinned to exact versions. Check updates before merging them.
+
+## License
+
+[MIT](https://github.com/wmfs/tymly-cli-rest-client/blob/master/LICENSE)

@@ -1,6 +1,9 @@
-version: 2
+version: 2.1
+orbs:
+  gh-app: wmfs/github-app-token@1.0.0
+  tymly: wmfs/tymly-ci@1
 jobs:
-  unit test:
+  unit-test:
     docker:
       - image: cimg/node:lts
         auth:
@@ -25,9 +28,6 @@ jobs:
       - run:
           name: test
           command: npm test
-      - run:
-          name: codecov
-          command: npm run coverage
   lint:
     docker:
       - image: cimg/node:lts
@@ -65,17 +65,22 @@ jobs:
           key: v1-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
+      - gh-app/mint
       - run:
           name: release
           command: npx semantic-release
 workflows:
-  version: 2
   test_and_release:
     jobs:
-      - unit test:
+      - tymly/commit-check:
           context:
             - docker-hub-creds
-            - build-env-vars
+          filters:
+            branches:
+              ignore: master
+      - unit-test:
+          context:
+            - docker-hub-creds
       - lint:
           context:
             - docker-hub-creds
@@ -83,8 +88,9 @@ workflows:
           context:
             - docker-hub-creds
             - build-env-vars
+            - github-app
           requires:
-            - unit test
+            - unit-test
             - lint
           filters:
             branches:
