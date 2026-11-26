@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.21.0...v1.22.0) (2026-11-26)
+
+
+### Bug Fixes
+
+* [sc-34658] make tymly-cli-rest-client reliable for scheduled jobs ([#385](https://github.com/wmfs/tymly-cli-rest-client/issues/385)) ([32d3a7c](https://github.com/wmfs/tymly-cli-rest-client/commit/32d3a7c1fa8b030e716813be772ac52222b7cf91))
+
 # [1.21.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.20.0...v1.21.0) (2025-04-04)
 
 # [1.20.0](https://github.com/wmfs/tymly-cli-rest-client/compare/v1.19.0...v1.20.0) (2024-11-06)
