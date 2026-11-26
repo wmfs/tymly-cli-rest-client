@@ -24,9 +24,9 @@ function fakeHttp ({ data = { status: 'SUCCEEDED' }, status = 200, fail } = {}) 
   }
 }
 
-function httpError (status, statusText) {
+function httpError (status, statusText, data) {
   const err = new Error(`Request failed with status code ${status}`)
-  err.response = { status, statusText }
+  err.response = { status, statusText, data }
   // axios errors carry the request config, which must never reach the output
   err.config = { headers: { Authorization: 'Bearer secret-token' }, data: '{"client_secret":"test-client-secret"}' }
   return err

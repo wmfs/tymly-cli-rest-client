@@ -38,6 +38,11 @@ describe('auth', () => {
     await expectCliError(auth(TEST_ENV, http), 'Invalid auth response from https://auth.example.com/oauth/token')
   })
 
+  it('includes Auth0\'s error and description', async () => {
+    const http = fakeHttp({ fail: httpError(401, 'Unauthorized', { error: 'access_denied', error_description: 'Unauthorized client' }) })
+    await expectCliError(auth(TEST_ENV, http), 'HTTP 401 Unauthorized (access_denied: Unauthorized client)')
+  })
+
   it('reports a failed request without leaking the client secret', async () => {
     const http = fakeHttp({ fail: httpError(401, 'Unauthorized') })
     const err = await expectCliError(auth(TEST_ENV, http), 'HTTP 401 Unauthorized')

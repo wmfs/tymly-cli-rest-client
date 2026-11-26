@@ -7,10 +7,12 @@ const { TEST_ENV, fakeHttp, httpError, expectCliError } = require('./helpers')
 const getToken = async () => 'test-token'
 const silent = () => {}
 
-function runWith ({ flags = {}, argv = [], http = fakeHttp(), log = silent } = {}) {
+// flags: passed the npm way (npm_config_* environment variables)
+// args: passed after `--`, so they arrive in process.argv
+function runWith ({ flags = {}, args = [], argv = [], http = fakeHttp(), log = silent } = {}) {
   const env = { ...TEST_ENV }
   for (const [key, value] of Object.entries(flags)) env[`npm_config_${key.toLowerCase()}`] = value
-  return { http, promise: run({ env, argv, http, getToken, log }) }
+  return { http, promise: run({ env, argv: ['node', 'lib/cli', ...argv, ...args], http, getToken, log }) }
 }
 
 describe('run', () => {
@@ -26,6 +28,24 @@ describe('run', () => {
     expect(call.body.options.sendResponse).to.eql('COMPLETE')
     expect(call.options.headers).to.eql({ Authorization: 'Bearer test-token' })
     expect(call.options.timeout).to.eql(300000)
+  })
+
+  it('takes the command and inputs from the command line', async () => {
+    const { http, promise } = runWith({
+      args: ['--command=search', '--query=kebab', '--offset=0', '--limit=5', '--lat=52.48', '--long=-1.89']
+    })
+    await promise
+    expect(http.calls[0].body.stateMachineName).to.eql('tymly_search_1_0')
+    expect(http.calls[0].body.input).to.eql({ query: 'kebab', offset: 0, limit: 5, lat: 52.48, long: -1.89 })
+  })
+
+  it('prefers command-line flags to npm\'s environment variables', async () => {
+    const { http, promise } = runWith({
+      flags: { command: 'search', query: 'a', offset: '0', limit: '1', long: 'true' },
+      args: ['--long=-1.89']
+    })
+    await promise
+    expect(http.calls[0].body.input.long).to.eql(-1.89)
   })
 
   it('sends no input when no flags are passed', async () => {
@@ -96,6 +116,12 @@ describe('run', () => {
     const { promise } = runWith({ flags: { command: 'fullReindex' }, http })
     const err = await expectCliError(promise, 'Request to https://tymly.example.com/executions failed: HTTP 503 Service Unavailable')
     expect(err.message).to.not.include('test-token')
+  })
+
+  it('includes the error detail from Tymly\'s response', async () => {
+    const http = fakeHttp({ fail: httpError(403, 'Forbidden', { error: 'Forbidden', message: 'No permission to start tymly_fullReindex_1_0' }) })
+    const { promise } = runWith({ flags: { command: 'fullReindex' }, http })
+    await expectCliError(promise, 'HTTP 403 Forbidden (Forbidden: No permission to start tymly_fullReindex_1_0)')
   })
 
   it('reports a timeout or network error', async () => {

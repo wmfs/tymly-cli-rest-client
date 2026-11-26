@@ -20,7 +20,7 @@ Scheduled jobs are planned to move into Tymly itself (tymly-schedule-plugin), af
 
 ## How it works
 
-1. A cron job runs `npm run cli --command=<command>` in the package directory, with any inputs as extra flags.
+1. A cron job runs `npm run cli -- --command=<command>` in the package directory, with any inputs as extra flags.
 2. The CLI gets a token from Auth0 using the client credentials grant.
 3. It posts the command's state machine name, input and options to `<TYMLY_API_URL>/executions`.
 4. It waits for the response the run configuration asks for (see [Exit codes](#exit-codes)), then exits.
@@ -53,19 +53,23 @@ If any required variable is missing, the CLI lists them all and exits with code 
 ## Running a job
 
 ```bash
-$ npm run cli --command=<command> [--<input>=<value> ...]
+$ npm run cli -- --command=<command> [--<input>=<value> ...]
 ```
+
+Put the flags after `--`, and write them as `--name=value`. npm then passes them to the CLI untouched.
+
+Without the `--`, npm reads each flag as one of its own settings and passes it on as an environment variable. That still works for most flags, so older crontab entries keep running, but flags that are also npm settings lose their value: `--long=-2.0` arrives as `true`, and `--dryRun=false` arrives empty. npm also plans to stop passing unknown flags on this way. If a flag is given both ways, the one after `--` wins.
 
 Add `quiet` (or `q`) to print nothing except errors:
 
 ```bash
-$ npm run cli quiet --command=identifyOverdueRpFaults --dryRun=true
+$ npm run cli -- quiet --command=identifyOverdueRpFaults --dryRun=true
 ```
 
 Example crontab entry, run from the package directory:
 
 ```
-0 6 * * * cd <package directory> && npm run cli quiet --command=archiveStaleExecution >> <log file> 2>&1
+0 6 * * * cd <package directory> && npm run cli -- quiet --command=archiveStaleExecution >> <log file> 2>&1
 ```
 
 ### Exit codes
@@ -82,9 +86,9 @@ What a `0` proves depends on the run configuration's `sendResponse`:
 | `sendResponse` | Tymly responds | A `0` means |
 | -------------- | -------------- | ----------- |
 | `COMPLETE` | when the state machine finishes | it finished and did not fail |
-| not set | as soon as the execution starts | it started; check Tymly for the outcome |
+| `IMMEDIATELY` (or not set) | as soon as the execution starts | Tymly accepted it and it started. It doesn't say whether it finished: check Tymly for the outcome |
 
-A run configuration can set `timeout` in milliseconds. Without one, the CLI waits up to 30 minutes. A timeout makes the CLI exit with `1`, but the execution carries on in Tymly.
+A run configuration can set `timeout` in milliseconds. Without one, the CLI waits up to 30 minutes. For jobs that take longer than that, such as `refreshAll`, use `IMMEDIATELY` rather than a longer timeout. A timeout makes the CLI exit with `1`, but the execution carries on in Tymly. A proxy or load balancer in front of the Tymly API may close a long request sooner (an HTTP 504), with the same result.
 
 ## Inputs
 
@@ -97,7 +101,7 @@ Only the flags you pass are sent to the state machine. The values in a run confi
 | `false` (boolean) | `--dryRun=true` | `true` (only `true` or `false` are accepted) |
 | `[]` (array) | `--categoryRestriction=gazetteer,fireSafety` | `["gazetteer", "fireSafety"]` |
 
-npm lower-cases flag names, so `--dryRun` and `--dryrun` are the same flag. An invalid value stops the CLI before anything is started.
+Flag names aren't case-sensitive, so `--dryRun` and `--dryrun` are the same flag. An invalid value, including a blank number, stops the CLI before anything is started.
 
 ## Commands
 
@@ -118,18 +122,18 @@ These are run by cron on the Tymly server.
 `fullReindex` needs the Auth0 client to have the `tymly_solrAdmin` role.
 
 ```bash
-$ npm run cli --command=archiveStaleExecution
-$ npm run cli --command=checkSawApptNotifications
-$ npm run cli --command=fullReindex
-$ npm run cli --command=refreshAll
-$ npm run cli --command=sendCnoReferralIncidentNotifications
-$ npm run cli --command=sendCnoReminders
+$ npm run cli -- --command=archiveStaleExecution
+$ npm run cli -- --command=checkSawApptNotifications
+$ npm run cli -- --command=fullReindex
+$ npm run cli -- --command=refreshAll
+$ npm run cli -- --command=sendCnoReferralIncidentNotifications
+$ npm run cli -- --command=sendCnoReminders
 ```
 
 **Identify overdue RP faults.** `--dryRun=true` finds overdue faults and reports them without changing anything or sending Teams notifications. Leave the flag out for a normal run, which marks faults as overdue and sends the notifications. Only schedule it with `--dryRun=true` while a dry run has been agreed.
 
 ```bash
-$ npm run cli --command=identifyOverdueRpFaults --dryRun=true
+$ npm run cli -- --command=identifyOverdueRpFaults --dryRun=true
 ```
 
 ### Manual commands
@@ -144,13 +148,13 @@ These are for running by hand, for example to test the connection to Tymly. Don'
 Refresh the rankings for one category (`refreshAll` refreshes all of them):
 
 ```bash
-$ npm run cli --command=refreshRanking --schema=wmfs --category=factory
+$ npm run cli -- --command=refreshRanking --schema=wmfs --category=factory
 ```
 
 Search:
 
 ```bash
-$ npm run cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
+$ npm run cli -- --command=search --query=99_vauxhall_road --limit=10 --offset=0 --categoryRestriction=gazetteer,fireSafety
 ```
 
 ## Adding or changing a job
@@ -163,7 +167,7 @@ $ npm run cli --command=search --query=99_vauxhall_road --limit=10 --offset=0 --
    | `input` | Required (`{}` if none). Each key is an accepted flag; its value sets the type (see [Inputs](#inputs)) |
    | `required` | Optional. Inputs that must be passed |
    | `options.instigatingClient` | Required: `{ "appName": "tymly-cli", "domain": "cli" }` |
-   | `options.sendResponse` | `COMPLETE` to wait until the state machine finishes, or leave it out for long jobs so Tymly responds when the run starts. Don't wait for a resource callback such as `awaitingHumanInput`: that's for a user's card, and nobody will complete it |
+   | `options.sendResponse` | `COMPLETE` to wait until the state machine finishes, or `IMMEDIATELY` for long jobs so Tymly responds as soon as the run starts. Don't wait for a resource callback such as `awaitingHumanInput`: that's for a user's card, and nobody will complete it |
    | `timeout` | Optional, in milliseconds. Defaults to 30 minutes |
 
 2. Register it in `run-configurations/index.js`. The key is the command name.

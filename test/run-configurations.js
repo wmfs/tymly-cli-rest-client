@@ -3,12 +3,37 @@
 const expect = require('chai').expect
 const fs = require('fs')
 const path = require('path')
+const { execFileSync } = require('child_process')
 const configs = require('../run-configurations')
 
 const dir = path.join(__dirname, '..', 'run-configurations')
 const readme = fs.readFileSync(path.join(__dirname, '..', 'README.md'), 'utf8')
 
-describe('run configurations', () => {
+// npm's own settings. A flag with one of these names, passed without `--`, is taken by npm:
+// --long=-2.0 reaches the CLI as npm_config_long=true.
+function npmSettingNames () {
+  const json = execFileSync('npm', ['config', 'ls', '-l', '--json'], { encoding: 'utf8' })
+  return new Set(Object.keys(JSON.parse(json)).map(name => name.toLowerCase()))
+}
+
+const kebab = name => name.replace(/[A-Z]/g, c => '-' + c.toLowerCase())
+
+describe('run configurations', function () {
+  this.timeout(10000)
+
+  it('only documents inputs that clash with npm settings in the -- form', () => {
+    const npmSettings = npmSettingNames()
+    const examples = readme.split('\n').filter(line => line.includes('run cli'))
+    for (const config of Object.values(configs)) {
+      for (const input of Object.keys(config.input)) {
+        if (!npmSettings.has(input.toLowerCase()) && !npmSettings.has(kebab(input))) continue
+        for (const line of examples.filter(l => l.includes(`--${input}=`))) {
+          expect(line, `--${input} is an npm setting, so pass it after --`).to.include('run cli -- ')
+        }
+      }
+    }
+  })
+
   it('registers every configuration file exactly once', () => {
     const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'))
     const registered = Object.values(configs)

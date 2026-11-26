@@ -40,6 +40,14 @@ describe('command line', function () {
     expect(stdout).to.include("Unknown config: 'searchStuff'")
   })
 
+  it('receives flags after -- untouched, including names npm uses itself', async () => {
+    // Without --, npm would pass --long=abc as npm_config_long=true. An invalid value proves
+    // the real value arrived, and stops the run before it requests a token.
+    const { code, stdout } = await npmRunCli(['--', '--command=search', '--query=x', '--offset=0', '--limit=1', '--long=abc'], TEST_ENV)
+    expect(code).to.eql(1)
+    expect(stdout).to.include("Invalid value for long: 'abc'")
+  })
+
   it('receives camelCase flags from npm', async () => {
     // npm passes --dryRun as npm_config_dryrun. An invalid value proves the flag arrived,
     // and stops the run before it requests a token.
